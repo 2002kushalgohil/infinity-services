@@ -1,9 +1,114 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-    font-family: 'Poppins', sans-serif;
-    /* border: 2px solid red; */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: "Poppins", sans-serif;
+  transition: all 0.1s ease-in-out;
+  /* border: 2px solid red; */
+}
+
+:root {
+  --primary-Color-Dark: #7161ef;
+  --text-Color: #000;
+  --primary-Color-Light: #ffff;
+  --mp-Main: 15px;
+  --mp-Secondary: 10px;
+  --mp-Tertiary: 5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-Color);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-Color);
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-Color);
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+/* --------------------------------- Box Shadow ---------------------------------*/
+
+.boxShadowMain:hover {
+  -webkit-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
+  -moz-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
+  box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
+}
+
+/* --------------------------------- Button ---------------------------------*/
+.customBtn {
+  margin: 100px;
+  padding: var(--mp-Tertiary) var(--mp-Main);
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  border-radius: var(--mp-Tertiary);
+  background-color: var(--primary-Color-Dark);
+  color: var(--primary-Color-Light);
+  border: 1px solid var(--primary-Color-Light);
+}
+
+.customBtn:hover {
+  background-color: var(--primary-Color-Light);
+  color: var(--primary-Color-Dark);
+  border-color: var(--primary-Color-Dark);
+}
+
+.customBtn:active {
+  background-color: var(--primary-Color-Dark);
+  color: var(--primary-Color-Light);
+}
+
+.customBtnWhite {
+  background-color: var(--primary-Color-Light);
+  border: 1px solid var(--primary-Color-Dark);
+  color: var(--primary-Color-Dark);
+}
+
+/* --------------------------------- Glass Morphism ---------------------------------*/
+.glassMorphismMain {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* --------------------------------- Input Box ---------------------------------*/
+.inputBx {
+  margin: 100px;
+  border: 1.5px solid var(--primary-Color-Dark);
+  border-radius: var(--mp-Tertiary);
+  outline: none;
+  padding: var(--mp-Tertiary) var(--mp-Secondary);
+  background-color: var(--primary-Color-Light);
+}
+
+.inputBx:active {
+  border-color: black;
+}
+
+.inputBx:hover {
+  border-color: black;
 }
