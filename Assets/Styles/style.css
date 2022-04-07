@@ -5,17 +5,24 @@
   box-sizing: border-box;
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-family: "Poppins", sans-serif;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
   /* border: 2px solid red; */
 }
 
 :root {
   --primary-Color-Dark: #7161ef;
+  --border-Color: #a9a9a9;
+  --primary-Color-Dark-5-Opacity: #7261ef7f;
   --text-Color: #000;
   --primary-Color-Light: #ffff;
   --mp-Main: 15px;
   --mp-Secondary: 10px;
   --mp-Tertiary: 5px;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
 }
 
 h1 {
@@ -31,9 +38,16 @@ h2 {
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--text-Color);
+}
+
+a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: blue;
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {
@@ -52,15 +66,20 @@ p {
 
 /* --------------------------------- Box Shadow ---------------------------------*/
 
-.boxShadowMain:hover {
+.boxShadow1Hover:hover {
+  -webkit-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
+  -moz-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
+  box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
+}
+
+.boxShadow1 {
   -webkit-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
   -moz-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
   box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
 }
 
 /* --------------------------------- Button ---------------------------------*/
-.customBtn {
-  margin: 100px;
+.btn {
   padding: var(--mp-Tertiary) var(--mp-Main);
   font-size: 1rem;
   font-weight: 500;
@@ -69,40 +88,40 @@ p {
   border-radius: var(--mp-Tertiary);
   background-color: var(--primary-Color-Dark);
   color: var(--primary-Color-Light);
-  border: 1px solid var(--primary-Color-Light);
+  border: 1px solid transparent;
 }
 
-.customBtn:hover {
+.btn:hover {
   background-color: var(--primary-Color-Light);
   color: var(--primary-Color-Dark);
   border-color: var(--primary-Color-Dark);
 }
 
-.customBtn:active {
+.btn:active {
   background-color: var(--primary-Color-Dark);
   color: var(--primary-Color-Light);
 }
 
-.customBtnWhite {
+.btnWhite {
   background-color: var(--primary-Color-Light);
   border: 1px solid var(--primary-Color-Dark);
   color: var(--primary-Color-Dark);
 }
 
 /* --------------------------------- Glass Morphism ---------------------------------*/
-.glassMorphismMain {
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
 }
 
 /* --------------------------------- Input Box ---------------------------------*/
 .inputBx {
-  margin: 100px;
   border: 1.5px solid var(--primary-Color-Dark);
   border-radius: var(--mp-Tertiary);
   outline: none;
-  padding: var(--mp-Tertiary) var(--mp-Secondary);
+  padding: var(--mp-Secondary);
   background-color: var(--primary-Color-Light);
+  width: 100%;
 }
 
 .inputBx:active {
@@ -111,4 +130,106 @@ p {
 
 .inputBx:hover {
   border-color: black;
+}
+
+/* --------------------------------- Login and Signup ---------------------------------*/
+
+.lsSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lsModal {
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  max-height: 700px;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid var(--border-Color);
+  margin: 30px;
+  border-radius: var(--mp-Main);
+}
+
+.lsModalSec1 {
+  padding: var(--mp-Main);
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.lsModalSec2 {
+  background-color: var(--primary-Color-Dark-5-Opacity);
+  flex: 3;
+}
+
+.lsModalSec2 img {
+  width: 100%;
+  height: 100%;
+}
+
+.lsModalLogoDiv {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+}
+
+.lsModalLogoDiv p {
+  margin-left: var(--mp-Secondary);
+}
+.lsModalLogo {
+  width: 80px;
+}
+
+.lsModalTermsDiv {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+}
+
+.lsModalTermsDiv a {
+  margin-left: var(--mp-Main);
+}
+
+.lsModelForm {
+  margin: 30px 0px 30px 0px;
+  width: 100%;
+  padding: 0px 60px;
+}
+
+.lsModelForm input,
+.lsModelForm button,
+.lsModelForm a {
+  margin-top: var(--mp-Main);
+}
+.lsModelForm a {
+  display: inline-block;
+  margin-right: var(--mp-Main);
+}
+
+.lsModelFormBottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 850px) {
+  .lsModalSec1 {
+    width: 100%;
+  }
+  .lsModalSec2 {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .lsModelForm {
+    padding: var(--mp-Secondary);
+  }
 }
