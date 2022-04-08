@@ -12,7 +12,6 @@
 :root {
   --primary-Color-Dark: #7161ef;
   --border-Color: #a9a9a9;
-  --primary-Color-Dark-5-Opacity: #7261ef7f;
   --text-Color: #000;
   --primary-Color-Light: #ffff;
   --mp-Main: 15px;
@@ -20,10 +19,6 @@
   --mp-Tertiary: 5px;
 }
 
-section {
-  min-height: 100vh;
-  width: 100%;
-}
 
 h1 {
   font-size: 2.5rem;
@@ -116,7 +111,7 @@ a {
 
 /* --------------------------------- Input Box ---------------------------------*/
 .inputBx {
-  border: 1.5px solid var(--primary-Color-Dark);
+  border: 1.5px solid var(--border-Color);
   border-radius: var(--mp-Tertiary);
   outline: none;
   padding: var(--mp-Secondary);
@@ -135,10 +130,14 @@ a {
 /* --------------------------------- Login and Signup ---------------------------------*/
 
 .lsSection {
+  height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 30px;
 }
+
 
 .lsModal {
   width: 100%;
@@ -148,7 +147,6 @@ a {
   display: flex;
   overflow: hidden;
   border: 1px solid var(--border-Color);
-  margin: 30px;
   border-radius: var(--mp-Main);
 }
 
@@ -159,16 +157,20 @@ a {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  border-right: 1px solid var(--border-Color);
 }
 
 .lsModalSec2 {
-  background-color: var(--primary-Color-Dark-5-Opacity);
   flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff0d9;
 }
 
 .lsModalSec2 img {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .lsModalLogoDiv {
@@ -203,6 +205,7 @@ a {
 }
 
 .lsModelForm input,
+.lsModelForm select,
 .lsModelForm button,
 .lsModelForm a {
   margin-top: var(--mp-Main);
@@ -222,6 +225,7 @@ a {
 @media (max-width: 850px) {
   .lsModalSec1 {
     width: 100%;
+    border-right: none;
   }
   .lsModalSec2 {
     display: none;
