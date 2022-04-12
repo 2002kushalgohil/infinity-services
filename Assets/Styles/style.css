@@ -5,20 +5,25 @@
   box-sizing: border-box;
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   font-family: "Poppins", sans-serif;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   /* border: 2px solid red; */
 }
 
 :root {
-  --primary-Color-Dark: #7161ef;
+  --primary-Color-Dark: black;
   --border-Color: #a9a9a9;
   --text-Color: #000;
+  --blue-Color: #005ce69d;
   --primary-Color-Light: #ffff;
+  --hover-Bg-Color: rgb(232, 232, 232);
   --mp-Main: 15px;
   --mp-Secondary: 10px;
   --mp-Tertiary: 5px;
 }
 
+.mainSection {
+  padding: var(--mp-Main);
+}
 
 h1 {
   font-size: 2.5rem;
@@ -41,7 +46,7 @@ p {
 a {
   font-size: 0.9rem;
   text-decoration: none;
-  color: blue;
+  color: var(--blue-Color);
   cursor: pointer;
 }
 
@@ -62,15 +67,15 @@ a {
 /* --------------------------------- Box Shadow ---------------------------------*/
 
 .boxShadow1Hover:hover {
-  -webkit-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
-  -moz-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
-  box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
+  -webkit-box-shadow: 0px 0px 29px -15px black;
+  -moz-box-shadow: 0px 0px 29px -15px black;
+  box-shadow: 0px 0px 29px -15px black;
 }
 
 .boxShadow1 {
-  -webkit-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
-  -moz-box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
-  box-shadow: 0px 0px 29px -7px rgba(113, 97, 239, 1);
+  -webkit-box-shadow: 0px 0px 29px -15px black;
+  -moz-box-shadow: 0px 0px 29px -15px black;
+  box-shadow: 0px 0px 29px -15px black;
 }
 
 /* --------------------------------- Button ---------------------------------*/
@@ -111,7 +116,7 @@ a {
 
 /* --------------------------------- Input Box ---------------------------------*/
 .inputBx {
-  border: 1.5px solid var(--border-Color);
+  border: 1px solid var(--border-Color);
   border-radius: var(--mp-Tertiary);
   outline: none;
   padding: var(--mp-Secondary);
@@ -120,12 +125,135 @@ a {
 }
 
 .inputBx:active {
-  border-color: black;
+  border-color: var(--blue-Color);
 }
 
 .inputBx:hover {
-  border-color: black;
+  border-color: var(--blue-Color);
 }
+
+/* --------------------------------- Navbar ---------------------------------*/
+
+nav {
+  height: 70px;
+  border-bottom: 1px solid var(--border-Color);
+  padding: var(--mp-Main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: rgb(255, 255, 255);
+}
+
+nav img {
+  height: 100%;
+  cursor: pointer;
+}
+
+.navUserIcon {
+  border-radius: 50%;
+  padding: 5px;
+  border: 1px solid #fff;
+}
+
+.navDropDownDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: var(--mp-Tertiary);
+  padding: var(--mp-Secondary);
+  position: absolute;
+  right: 15px;
+  top: 55px;
+  border: 1px solid var(--border-Color);
+  background-color: #fff;
+  display: none;
+}
+
+.navDropDownDiv a {
+  color: var(--text-Color);
+  border: 1px solid var(--border-Color);
+  padding: var(--mp-Tertiary);
+  border-radius: var(--mp-Tertiary);
+  width: 100%;
+  text-align: center;
+  margin-top: var(--mp-Secondary);
+}
+
+.navDropDownDiv a:first-child {
+  margin-top: 0;
+}
+
+.navDropDownDiv a:hover {
+  background-color: var(--hover-Bg-Color);
+  border-color: var(--blue-Color);
+}
+
+.navUserIcon:hover {
+  background-color: var(--hover-Bg-Color);
+  border-color: var(--blue-Color);
+}
+#navCheckBx {
+  display: none;
+}
+
+#navCheckBx:checked ~ .navDropDownDiv {
+  display: flex;
+}
+
+.userDashbaordSearchDiv {
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.userDashbaordSearchDivSearchParent {
+  width: 100%;
+  margin-top: var(--mp-Secondary);
+  position: relative;
+}
+
+.userDashboardSearchDropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  top: 55px;
+  display: none;
+}
+
+.userDashboardSearchDropdownMainDiv{
+  border: 1px solid var(--border-Color);
+  border-radius: var(--mp-Tertiary);
+  width: 400px;
+  text-align: left;
+  padding: var(--mp-Main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userDashboardSearchDropdownSubDiv1,
+.userDashboardSearchDropdownSubDiv2{
+  flex: 1;
+}
+
+.userDashbaordSearchDiv input {
+  max-width: 400px;
+}
+
+#userSearchChkBx{
+  display: none;
+}
+
+#userSearchChkBx:checked ~ .userDashboardSearchDropdown{
+  display: flex;
+}
+
 
 /* --------------------------------- Login and Signup ---------------------------------*/
 
@@ -137,7 +265,6 @@ a {
   justify-content: center;
   padding: 30px;
 }
-
 
 .lsModal {
   width: 100%;
