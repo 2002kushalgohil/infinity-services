@@ -21,6 +21,11 @@
   --mp-Tertiary: 5px;
 }
 
+::selection {
+  color: var(--primary-Color-Light);
+  background: var(--text-Color);
+}
+
 .mainSection {
   padding: var(--mp-Main);
 }
@@ -155,7 +160,7 @@ nav img {
 .navUserIcon {
   border-radius: 50%;
   padding: 5px;
-  border: 1px solid #fff;
+  border: 1px solid var(--primary-Color-Light);
 }
 
 .navDropDownDiv {
@@ -166,10 +171,10 @@ nav img {
   border-radius: var(--mp-Tertiary);
   padding: var(--mp-Secondary);
   position: absolute;
-  right: 15px;
-  top: 55px;
+  right: 20px;
+  top: 60px;
   border: 1px solid var(--border-Color);
-  background-color: #fff;
+  background-color: var(--primary-Color-Light);
   display: none;
 }
 
@@ -224,9 +229,10 @@ nav img {
   position: absolute;
   top: 55px;
   display: none;
+  padding: var(--mp-Main);
 }
 
-.userDashboardSearchDropdownMainDiv{
+.userDashboardSearchDropdownMainDiv {
   border: 1px solid var(--border-Color);
   border-radius: var(--mp-Tertiary);
   width: 400px;
@@ -235,10 +241,15 @@ nav img {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--primary-Color-Light);
+}
+
+.userDashboardSearchDropdownMainDiv label {
+  cursor: pointer;
 }
 
 .userDashboardSearchDropdownSubDiv1,
-.userDashboardSearchDropdownSubDiv2{
+.userDashboardSearchDropdownSubDiv2 {
   flex: 1;
 }
 
@@ -246,14 +257,13 @@ nav img {
   max-width: 400px;
 }
 
-#userSearchChkBx{
+#userSearchChkBx {
   display: none;
 }
 
-#userSearchChkBx:checked ~ .userDashboardSearchDropdown{
+#userSearchChkBx:checked ~ .userDashboardSearchDropdown {
   display: flex;
 }
-
 
 /* --------------------------------- Login and Signup ---------------------------------*/
 
@@ -347,6 +357,23 @@ nav img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.userDashBoardCardMainDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.userDashBoardCard {
+  cursor: pointer;
+  border: 1px solid var(--border-Color);
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--mp-Tertiary);
+  padding: var(--mp-Main);
+  margin: var(--mp-Main);
 }
 
 @media (max-width: 850px) {
