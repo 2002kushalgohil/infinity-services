@@ -42,6 +42,12 @@ h2 {
   color: var(--text-Color);
 }
 
+h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-Color);
+}
+
 p {
   font-size: 1rem;
   font-weight: 400;
@@ -62,6 +68,10 @@ a {
 
   h2 {
     font-size: 1.7rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
   }
 
   p {
@@ -230,6 +240,7 @@ nav img {
   top: 55px;
   display: none;
   padding: var(--mp-Main);
+  z-index: 10;
 }
 
 .userDashboardSearchDropdownMainDiv {
@@ -263,6 +274,107 @@ nav img {
 
 #userSearchChkBx:checked ~ .userDashboardSearchDropdown {
   display: flex;
+}
+
+.userDashBoardCardMainDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: var(--mp-Main);
+}
+
+.userDashBoardCard {
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  height: 280px;
+  border-radius: var(--mp-Tertiary);
+  overflow: hidden;
+  margin: var(--mp-Main);
+  position: relative;
+}
+
+.userDashBoardCardOverlay {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  padding: var(--mp-Main);
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    #ffffff7e,
+    #b9b9b996,
+    #7777779c,
+    #303030e0,
+    #000000
+  );
+}
+
+.userDashBoardCardOverlay:hover {
+  background-image: linear-gradient(
+    to bottom,
+    #6c6c6c7e,
+    #42424296,
+    #3636369c,
+    #000000e0,
+    #000000
+  );
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+}
+
+.userDashBoardCardOverlaySub1 {
+  opacity: 0;
+  width: 100%;
+}
+
+.userDashBoardCardOverlaySub1ButtonDiv{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userDashBoardCardOverlaySub1 *{
+  margin-bottom: var(--mp-Tertiary);
+}
+.userDashBoardCardOverlay:hover .userDashBoardCardOverlaySub1 {
+  opacity: 1;
+}
+
+.userDashBoardCardOverlay * {
+  color: var(--primary-Color-Light);
+}
+
+.userDashBoardCardOverlaySub2 {
+  width: 100%;
+}
+
+.userDashboardCardOverlayBottomDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.userDashBoardCardBgImg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 500px) {
+  .userDashBoardCard {
+    margin: var(--mp-Main) 0px;
+  }
 }
 
 /* --------------------------------- Login and Signup ---------------------------------*/
@@ -357,23 +469,6 @@ nav img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.userDashBoardCardMainDiv {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.userDashBoardCard {
-  cursor: pointer;
-  border: 1px solid var(--border-Color);
-  width: 100%;
-  max-width: 400px;
-  border-radius: var(--mp-Tertiary);
-  padding: var(--mp-Main);
-  margin: var(--mp-Main);
 }
 
 @media (max-width: 850px) {
