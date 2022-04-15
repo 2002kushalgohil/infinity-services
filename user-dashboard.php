@@ -7,15 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./Assets/Styles/style.css" />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
     <title>Infinity Services</title>
 </head>
 
 <body>
     <nav>
-        <img src="/Assets/Images/logo.png" alt="" />
+        <img src="./Assets/Images/logo.png" alt="" />
         <input type="checkbox" name="navCheckBx" id="navCheckBx" />
         <label for="navCheckBx">
-            <img src="/Assets/Images/user.svg" class="navUserIcon" alt="" />
+            <img src="./Assets/Images/user.svg" class="navUserIcon" alt="" />
         </label>
         <div class="navDropDownDiv glass">
             <a href="#">Previous Order</a>
@@ -60,7 +62,7 @@
                 <div class="userDashBoardCardOverlay">
                     <div class="userDashBoardCardOverlaySub1">
                         <div class="userDashBoardCardOverlaySub1ButtonDiv">
-                            <button class="btn">Book me</button>
+                            <button class="btn">Book my Service</button>
                             <p>5 Reviews</p>
                         </div>
                         <p>
@@ -76,13 +78,13 @@
                         </div>
                     </div>
                 </div>
-                <img src="/Assets/Images/advocate.gif" class="userDashBoardCardBgImg" alt="" />
+                <img src="./Assets/Images/advocate.gif" class="userDashBoardCardBgImg" alt="" />
             </div>
             <div class="userDashBoardCard boxShadow1Hover">
                 <div class="userDashBoardCardOverlay">
                     <div class="userDashBoardCardOverlaySub1">
                         <div class="userDashBoardCardOverlaySub1ButtonDiv">
-                            <button class="btn">Book me</button>
+                            <button class="btn">Book my Service</button>
                             <p>50 Reviews</p>
                         </div>
                         <p>
@@ -98,13 +100,13 @@
                         </div>
                     </div>
                 </div>
-                <img src="/Assets/Images/electrician.gif" class="userDashBoardCardBgImg" alt="" />
+                <img src="./Assets/Images/electrician.gif" class="userDashBoardCardBgImg" alt="" />
             </div>
             <div class="userDashBoardCard boxShadow1Hover">
                 <div class="userDashBoardCardOverlay">
                     <div class="userDashBoardCardOverlaySub1">
                         <div class="userDashBoardCardOverlaySub1ButtonDiv">
-                            <button class="btn">Book me</button>
+                            <button class="btn">Book my Service</button>
                             <p>10 Reviews</p>
                         </div>
                         <p>
@@ -120,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="/Assets/Images/mechanic.gif" class="userDashBoardCardBgImg" alt="" />
+                <img src="./Assets/Images/mechanic.gif" class="userDashBoardCardBgImg" alt="" />
             </div>
         </div>
     </section>

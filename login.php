@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./Assets/Styles/style.css" />
   <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
   <title>Infinity Services Login</title>
 </head>
 
@@ -15,7 +17,7 @@
     <div class="lsModal boxShadow1">
       <div class="lsModalSec1">
         <div class="lsModalLogoDiv">
-          <img src="/Assets/Images/logo.png" class="lsModalLogo" alt="" />
+          <img src="./Assets/Images/logo.png" class="lsModalLogo" alt="" />
           <p>Infinity Services</p>
         </div>
         <div class="lsModelForm">
@@ -38,7 +40,7 @@
         </div>
       </div>
       <div class="lsModalSec2">
-        <img src="/Assets/Images/lsImg4.gif" alt="" />
+        <img src="./Assets/Images/lsImg4.gif" alt="" />
       </div>
     </div>
   </section>
