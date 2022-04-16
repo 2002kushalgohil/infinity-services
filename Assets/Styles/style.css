@@ -340,6 +340,17 @@ nav img {
   width: 100%;
 }
 
+.userDashboardCardStarMainP{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userDashboardCardStar{
+  width: 25px;
+  margin-left: var(--mp-Tertiary);
+}
+
 .userDashBoardCardOverlaySub1ButtonDiv{
   width: 100%;
   display: flex;

@@ -63,7 +63,7 @@
                     <div class="userDashBoardCardOverlaySub1">
                         <div class="userDashBoardCardOverlaySub1ButtonDiv">
                             <button class="btn">Book my Service</button>
-                            <p>5 Reviews</p>
+                            <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
                         </div>
                         <p>
                             I am ______ having 5 years of experience in this Lorem ipsum
@@ -85,7 +85,7 @@
                     <div class="userDashBoardCardOverlaySub1">
                         <div class="userDashBoardCardOverlaySub1ButtonDiv">
                             <button class="btn">Book my Service</button>
-                            <p>50 Reviews</p>
+                            <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
                         </div>
                         <p>
                             I am ______ having 5 years of experience in this Lorem ipsum
@@ -107,7 +107,7 @@
                     <div class="userDashBoardCardOverlaySub1">
                         <div class="userDashBoardCardOverlaySub1ButtonDiv">
                             <button class="btn">Book my Service</button>
-                            <p>10 Reviews</p>
+                            <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
                         </div>
                         <p>
                             I am ______ having 5 years of experience in this Lorem ipsum
