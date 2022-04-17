@@ -13,9 +13,10 @@
   --primary-Color-Dark: black;
   --border-Color: #a9a9a9;
   --text-Color: #000;
-  --blue-Color: #005ce69d;
+  --blue-Color: #005ce6c9;
   --primary-Color-Light: #ffff;
   --hover-Bg-Color: rgb(232, 232, 232);
+  --mp-Large: 30px;
   --mp-Main: 15px;
   --mp-Secondary: 10px;
   --mp-Tertiary: 5px;
@@ -170,7 +171,7 @@ nav img {
 
 .navUserIcon {
   border-radius: 50%;
-  padding: 5px;
+  padding: var(--mp-Tertiary);
   border: 1px solid var(--primary-Color-Light);
 }
 
@@ -222,7 +223,7 @@ nav img {
 
 .userDashbaordSearchDiv {
   width: 100%;
-  margin-top: 30px;
+  margin-top: var(--mp-Large);
   text-align: center;
 }
 
@@ -406,7 +407,7 @@ nav img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  padding: var(--mp-Large);
 }
 
 .lsModal {
@@ -473,7 +474,7 @@ nav img {
 }
 
 .lsModelForm {
-  margin: 30px 0px 30px 0px;
+  margin: var(--mp-Large) 0px var(--mp-Large) 0px;
   width: 100%;
   padding: 0px 60px;
 }
