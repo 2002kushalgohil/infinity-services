@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
-  <title>Infinity Services Login</title>
+  <title>Infinity Services Signup</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
           <p>Infinity Services</p>
         </div>
         <div class="lsModelForm">
-          <h2>Login</h2>
+          <h2>Signup</h2>
           <input type="text" class="inputBx boxShadow1Hover" placeholder="Enter Email" />
           <input type="password" class="inputBx boxShadow1Hover" placeholder="Enter Password" />
           <select class="inputBx boxShadow1Hover">
@@ -31,7 +31,7 @@
           </select>
           <div class="lsModelFormBottom">
             <a>Join with us</a>
-            <button class="btn boxShadow1">Login</button>
+            <button class="btn boxShadow1">Signup</button>
           </div>
         </div>
         <div class="lsModalTermsDiv">
