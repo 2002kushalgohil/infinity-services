@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2022 at 05:19 AM
+-- Generation Time: Apr 17, 2022 at 05:59 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -35,7 +35,11 @@ CREATE TABLE IF NOT EXISTS `complaints` (
   `sname` varchar(25) NOT NULL,
   `complaint` text NOT NULL,
   `cdate` date NOT NULL,
-  `ctime` time NOT NULL
+  `ctime` time NOT NULL,
+  KEY `uid` (`uid`),
+  KEY `service` (`service`),
+  KEY `uname` (`uname`),
+  KEY `sname` (`sname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -68,7 +72,10 @@ CREATE TABLE IF NOT EXISTS `services` (
   `pay_status` varchar(25) NOT NULL,
   `ratings` int(11) NOT NULL,
   `adate` date NOT NULL,
-  `atime` time NOT NULL
+  `atime` time NOT NULL,
+  KEY `fk_sname` (`sname`),
+  KEY `fk_service` (`service`),
+  KEY `fk_uname` (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -88,7 +95,8 @@ CREATE TABLE IF NOT EXISTS `sproviders` (
   `scharges` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`sid`),
   UNIQUE KEY `smail` (`smail`,`smob`),
-  UNIQUE KEY `sname` (`sname`)
+  UNIQUE KEY `sname` (`sname`),
+  UNIQUE KEY `fk_service` (`service`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -106,6 +114,27 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`uid`),
   UNIQUE KEY `uname` (`uname`,`umail`,`umob`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `complaints`
+--
+ALTER TABLE `complaints`
+  ADD CONSTRAINT `fk_serve` FOREIGN KEY (`service`) REFERENCES `sproviders` (`service`),
+  ADD CONSTRAINT `fk_sname` FOREIGN KEY (`sname`) REFERENCES `sproviders` (`sname`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_uid` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_uname` FOREIGN KEY (`uname`) REFERENCES `users` (`uname`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `services`
+--
+ALTER TABLE `services`
+  ADD CONSTRAINT `fk_service` FOREIGN KEY (`service`) REFERENCES `sproviders` (`service`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_sname2` FOREIGN KEY (`sname`) REFERENCES `sproviders` (`sname`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_uname2` FOREIGN KEY (`uname`) REFERENCES `users` (`uname`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
