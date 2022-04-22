@@ -14,7 +14,7 @@
 
 <body>
     <nav>
-        <img src="./Assets/Images/logo.png" alt="" />
+        <img src="./Assets/Images/infinityLoop2.gif" alt="" />
         <input type="checkbox" name="navCheckBx" id="navCheckBx" />
         <label for="navCheckBx">
             <img src="./Assets/Images/user.svg" class="navUserIcon" alt="" />

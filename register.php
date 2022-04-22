@@ -17,7 +17,7 @@
     <div class="lsModal boxShadow1">
       <div class="lsModalSec1">
         <div class="lsModalLogoDiv">
-        <img src="./Assets/Images/logo.png" class="lsModalLogo" alt="" />
+        <img src="./Assets/Images/infinityLoop2.gif" class="lsModalLogo" alt="" />
           <p>Infinity Services</p>
         </div>
         <div class="lsModelForm">
