@@ -12,9 +12,8 @@
   <title>Infinity Services Login</title>
     <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
-  <title>Infinity Services Signup</title>
+  <title>Login @ Infinity</title>
 </head>
-
 <body>
   <section class="lsSection">
     <div class="lsModal boxShadow1">
