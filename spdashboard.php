@@ -9,57 +9,30 @@
 </head>
 
 <body>
-    <div>
-        <div>
-            <h2>Varun Anand</h2>
-            <div>
-                <p>
-                    <b>email</b><br><span>varunraj82786@gmail.com</span><br>
-                    <b>mobile no</b><br><span>9552726547</span>
-                </p>
-            </div>
-            <div>
-                <span>Service Avaiable :</span>
-                <div>
-                    <h3>Advocate</h3>
-                    <h4>Ahmednagar , Maharashtra</h4>
-                    <b>Time </b>
-                    <span>
-                        09:00:00 AM to 01:00:00 PM
-                    </span>
-                    <b>Service Charges</b>
-                    <span>
-                        399$
-                    </span>
-                </div>
-            </div>
-        </div>
-        <HR></HR>
-        <div>
-            <h2>Kushal Gohil</h2>
-            <div>
-                <p>
-                    <b>email</b><br><span>kushalgohil21@gmail.com</span><br>
-                    <b>mobile no</b><br><span>7040099240</span>
-                </p>
-            </div>
-            <div>
-                <span>Service Avaiable :</span>
-                <div>
-                    <h3>Software Engineer</h3>
-                    <h4>Pune,Maharashtra</h4>
-                    <b>Time </b>
-                    <span>
-                        02:00:00 AM to 08:00:00 AM
-                    </span>
-                    <b>Service Charges</b>
-                    <span>
-                        299$
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+<?php
 
+ include('conn.php');
+ session_start();
+ $usr = $_SESSION['sess_user'];
+ mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
+ $db_id=mysqli_query($conn, "SELECT `id` FROM login WHERE `user_id`='{$usr}'");
+ $id = mysqli_fetch_array($db_id);
+ $query = mysqli_query($conn, "SELECT * FROM sproviders WHERE `id`='{$id['id']}'");
+ $numrows = mysqli_num_rows($query);
+ if ($numrows != 0) {
+     while ($row = mysqli_fetch_assoc($query)) {
+         echo 'SP Id :'.$row['id'].'<br>';
+         echo' Full Name : ' .$row['sname'].'<br>';
+         echo' Email ID :' . $row['smail'].'<br>';
+         echo' Mobile No :' . $row['smob'].'<br>';
+         echo'Service : ' . $row['service'].'<br>';
+         echo 'At Location :' .$row['slocation'].'<br>';
+         echo 'Available From ' .$row['stime'];
+         echo ' To ' .$row['etime'].'<br>';
+         echo 'Service Charges :' .$row['scharges'];
+     }
+    }
+?>
+</body>
 </html>
+
