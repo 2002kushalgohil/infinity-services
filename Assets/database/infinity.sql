@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2022 at 05:59 AM
+-- Generation Time: Apr 22, 2022 at 04:06 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -51,11 +51,18 @@ CREATE TABLE IF NOT EXISTS `complaints` (
 CREATE TABLE IF NOT EXISTS `login` (
   `user_id` varchar(50) NOT NULL,
   `password` varchar(8) NOT NULL,
-  `login_code` varchar(20) NOT NULL DEFAULT 'admin',
-  `security_key` varchar(767) DEFAULT NULL,
+  `stype` varchar(20) NOT NULL DEFAULT 'admin',
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `password` (`password`,`security_key`)
+  UNIQUE KEY `password` (`password`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`user_id`, `password`, `stype`) VALUES
+('admin', '1234', 'admin'),
+('varun', '123', 'sp');
 
 -- --------------------------------------------------------
 
