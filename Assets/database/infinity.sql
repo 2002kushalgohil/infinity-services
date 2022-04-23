@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2022 at 04:06 AM
+-- Generation Time: Apr 23, 2022 at 07:32 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -29,17 +29,17 @@ USE `infinity`;
 --
 
 CREATE TABLE IF NOT EXISTS `complaints` (
-  `uid` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `uname` varchar(25) NOT NULL,
   `service` varchar(25) NOT NULL,
   `sname` varchar(25) NOT NULL,
   `complaint` text NOT NULL,
   `cdate` date NOT NULL,
   `ctime` time NOT NULL,
-  KEY `uid` (`uid`),
   KEY `service` (`service`),
   KEY `uname` (`uname`),
-  KEY `sname` (`sname`)
+  KEY `sname` (`sname`),
+  KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -49,20 +49,23 @@ CREATE TABLE IF NOT EXISTS `complaints` (
 --
 
 CREATE TABLE IF NOT EXISTS `login` (
+  `id` int(11) NOT NULL,
   `user_id` varchar(50) NOT NULL,
   `password` varchar(8) NOT NULL,
-  `stype` varchar(20) NOT NULL DEFAULT 'admin',
+  `stype` varchar(20) NOT NULL,
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `password` (`password`)
+  UNIQUE KEY `password` (`password`),
+  KEY `uid` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`user_id`, `password`, `stype`) VALUES
-('admin', '1234', 'admin'),
-('varun', '123', 'sp');
+INSERT INTO `login` (`id`, `user_id`, `password`, `stype`) VALUES
+(201, 'abhinav', '12345', 'user'),
+(101, 'admin', '1234', 'admin'),
+(301, 'varun', '123', 'sp');
 
 -- --------------------------------------------------------
 
@@ -85,6 +88,13 @@ CREATE TABLE IF NOT EXISTS `services` (
   KEY `fk_uname` (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`sid`, `service`, `sname`, `uname`, `accept_status`, `pay_status`, `ratings`, `adate`, `atime`) VALUES
+(1, 'Advocate', 'varun anand', 'abhinav bankar', 'pending', '-', 0, '2022-04-22', '10:40:20');
+
 -- --------------------------------------------------------
 
 --
@@ -92,19 +102,27 @@ CREATE TABLE IF NOT EXISTS `services` (
 --
 
 CREATE TABLE IF NOT EXISTS `sproviders` (
-  `sid` int(11) NOT NULL,
+  `id` int(10) NOT NULL,
   `sname` varchar(50) NOT NULL,
   `smail` varchar(50) NOT NULL,
-  `smob` int(10) NOT NULL,
+  `smob` bigint(20) NOT NULL,
   `service` varchar(50) NOT NULL,
   `slocation` varchar(25) DEFAULT NULL,
   `stime` time NOT NULL,
-  `scharges` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`sid`),
-  UNIQUE KEY `smail` (`smail`,`smob`),
+  `etime` time NOT NULL,
+  `scharges` int(70) NOT NULL,
+  UNIQUE KEY `smail` (`smail`),
   UNIQUE KEY `sname` (`sname`),
-  UNIQUE KEY `fk_service` (`service`)
+  UNIQUE KEY `fk_service` (`service`),
+  KEY `sid` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sproviders`
+--
+
+INSERT INTO `sproviders` (`id`, `sname`, `smail`, `smob`, `service`, `slocation`, `stime`, `etime`, `scharges`) VALUES
+(301, 'varun anand', 'varunraj82786@gmail.com', 9552726547, 'Advocate', 'Ahmednagar', '02:00:00', '05:00:00', 399);
 
 -- --------------------------------------------------------
 
@@ -113,14 +131,21 @@ CREATE TABLE IF NOT EXISTS `sproviders` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `uid` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `uname` varchar(50) NOT NULL,
   `umail` varchar(50) NOT NULL,
-  `umob` int(10) NOT NULL,
+  `umob` bigint(20) NOT NULL,
   `location` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`uid`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `uname` (`uname`,`umail`,`umob`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `uname`, `umail`, `umob`, `location`) VALUES
+(201, 'abhinav bankar', 'abhinav789@gmail.com', 7974416421, 'shrirampur');
 
 --
 -- Constraints for dumped tables
@@ -132,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ALTER TABLE `complaints`
   ADD CONSTRAINT `fk_serve` FOREIGN KEY (`service`) REFERENCES `sproviders` (`service`),
   ADD CONSTRAINT `fk_sname` FOREIGN KEY (`sname`) REFERENCES `sproviders` (`sname`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_uid` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_uid` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_uname` FOREIGN KEY (`uname`) REFERENCES `users` (`uname`) ON DELETE CASCADE;
 
 --
@@ -142,6 +167,18 @@ ALTER TABLE `services`
   ADD CONSTRAINT `fk_service` FOREIGN KEY (`service`) REFERENCES `sproviders` (`service`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_sname2` FOREIGN KEY (`sname`) REFERENCES `sproviders` (`sname`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_uname2` FOREIGN KEY (`uname`) REFERENCES `users` (`uname`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `sproviders`
+--
+ALTER TABLE `sproviders`
+  ADD CONSTRAINT `sproviders_ibfk_1` FOREIGN KEY (`id`) REFERENCES `login` (`id`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id`) REFERENCES `login` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
