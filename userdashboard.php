@@ -13,16 +13,13 @@
 </head>
 
 <body>
-    <nav>
-        <img src="./Assets/Images/infinityLoop2.gif" alt="" />
-        <input type="checkbox" name="navCheckBx" id="navCheckBx" />
-        <label for="navCheckBx">
-            <img src="./Assets/Images/user.svg" class="navUserIcon" alt="" />
-        </label>
-        <div class="navDropDownDiv glass">
-            <a href="#">Previous Order</a>
-            <a href="#">Cart</a>
-        </div>
+    <nav class="glass">
+        <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
+            <ul>
+            <a href="#about"><li><button class="btn btnWhite">About</button></li></a>
+            <a href="#services"><li><button class="btn btnWhite">Services</button></li></a>
+            <a href="register.php"><li><button class="btn btnWhite">Register</button></li></a>
+        </ul>
     </nav>
     <section class="mainSection">
         <div class="userDashbaordSearchDiv">

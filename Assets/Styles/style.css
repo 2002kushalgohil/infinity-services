@@ -85,6 +85,10 @@ body {
   background-color: var(--main-Background-Color);
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 /* --------------------------------- Box Shadow ---------------------------------*/
 
 .boxShadow1Hover:hover {
@@ -129,13 +133,13 @@ body {
   color: var(--primary-Color-Dark);
 }
 
-.btnWhite:hover{
+.btnWhite:hover {
   background-color: var(--primary-Color-Dark);
   color: var(--primary-Color-Light);
   border: 1px solid var(--primary-Color-Light);
 }
 
-.btnWhite:active{
+.btnWhite:active {
   background-color: var(--primary-Color-Light);
   color: var(--primary-Color-Dark);
 }
@@ -167,78 +171,53 @@ body {
 /* --------------------------------- Navbar ---------------------------------*/
 
 nav {
-  height: 70px;
+  height: 65px;
+  padding: var(--mp-Main) var(--mp-Large);
   border-bottom: 1px solid var(--border-Color);
-  padding: var(--mp-Main);
+  position: fixed;
+  width: 100%;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  width: 100%;
-  top: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.386);
+  z-index: 100;
 }
 
-nav img {
-  height: 100%;
-  cursor: pointer;
+.navImg {
+  width: 35px;
+  border-radius: var(--mp-Secondary);
 }
 
-.navUserIcon {
-  border-radius: 50%;
-  padding: var(--mp-Tertiary);
-  border: 1px solid var(--primary-Color-Light);
-}
-
-.navDropDownDiv {
+nav ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+}
+
+nav ul li {
+  list-style-type: none;
+  margin-left: var(--mp-Large);
   border-radius: var(--mp-Tertiary);
-  padding: var(--mp-Secondary);
-  position: absolute;
-  right: 20px;
-  top: 60px;
-  border: 1px solid var(--border-Color);
-  background-color: var(--primary-Color-Light);
-  display: none;
+  cursor: pointer;
 }
 
-.navDropDownDiv a {
-  color: var(--text-Color);
-  border: 1px solid var(--border-Color);
-  padding: var(--mp-Tertiary);
-  border-radius: var(--mp-Tertiary);
-  width: 100%;
-  text-align: center;
-  margin-top: var(--mp-Secondary);
+
+@media (max-width: 550px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+  }
+  .navImg{
+    margin-bottom: var(--mp-Main);
+    align-self: flex-start;
+  }
 }
 
-.navDropDownDiv a:first-child {
-  margin-top: 0;
-}
-
-.navDropDownDiv a:hover {
-  background-color: var(--hover-Bg-Color);
-  border-color: var(--blue-Color);
-}
-
-.navUserIcon:hover {
-  background-color: var(--hover-Bg-Color);
-  border-color: var(--blue-Color);
-}
-#navCheckBx {
-  display: none;
-}
-
-#navCheckBx:checked ~ .navDropDownDiv {
-  display: flex;
-}
-
+/* --------------------------------- User Dashboard ---------------------------------*/
 .userDashbaordSearchDiv {
   width: 100%;
-  margin-top: var(--mp-Large);
+  margin-top: 120px;
   text-align: center;
 }
 
@@ -314,7 +293,7 @@ nav img {
 
 .userDashBoardCard:hover {
   transform: scale(1.15);
-  z-index: 100;
+  z-index: 20;
   height: 300px;
 }
 
@@ -695,15 +674,15 @@ nav img {
   margin-top: var(--mp-Main);
 }
 
-.LPServicesSubDiv1 a{
+.LPServicesSubDiv1 a {
   margin-top: var(--mp-Large);
 }
 
-.LPServicesSubDiv1 a{
+.LPServicesSubDiv1 a {
   color: var(--text-Color);
 }
 
-.LPServicesSubDiv1 div{
+.LPServicesSubDiv1 div {
   margin-top: var(--mp-Large);
   display: flex;
   flex-direction: column;
@@ -712,7 +691,7 @@ nav img {
   width: 100%;
 }
 
-.LPServicesSubDiv1 span{
+.LPServicesSubDiv1 span {
   background-color: var(--primary-Color-Light);
   width: 2px;
   height: 25px;

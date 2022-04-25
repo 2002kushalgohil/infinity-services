@@ -13,7 +13,15 @@
 </head>
 
 <body>
-        <section class="landingIndividualSection">
+    <nav class="glass">
+        <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
+            <ul>
+            <a href="#about"><li><button class="btn btnWhite">About</button></li></a>
+            <a href="#services"><li><button class="btn btnWhite">Services</button></li></a>
+            <a href="register.php"><li><button class="btn btnWhite">Register</button></li></a>
+        </ul>
+    </nav>
+        <section class="landingIndividualSection" id="home">
             <div class="landingIndividualInnerMainDiv landingDark LPHome">
                 <div class="LPHomeSubDiv1">
                     <h1>Infinity Services</h1>
@@ -25,7 +33,7 @@
                 </div>
             </div>
         </section>
-        <section class="landingIndividualSection">
+        <section class="landingIndividualSection" id="about">
             <div class="landingIndividualInnerMainDiv landingLight LPAbout">
                 <div class="LPAboutSubDiv2">
                     <img src="./Assets/Images/aboutUs1.gif" alt="">
@@ -38,7 +46,7 @@
                 </div>
             </div>
         </section>
-        <section class="landingIndividualSection">
+        <section class="landingIndividualSection" id="services">
             <div class="landingIndividualInnerMainDiv landingDark LPServices">
                 <div class="LPServicesSubDiv1">
                     <h1>Three Step Service</h1>
