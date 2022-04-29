@@ -83,10 +83,7 @@
                             <button class="btn">Book my Service</button>
                             <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
                         </div>
-                        <p>
-                            I am ______ having 5 years of experience in this Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit. Eos, quia?
-                        </p>
+                        <p><?php echo"$allServices[sdesc]"?></p>
                     </div>
                     <div class="userDashBoardCardOverlaySub2">
                         <h2><?php echo"$allServices[sname]"?></h2>

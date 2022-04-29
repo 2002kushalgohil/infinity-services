@@ -21,6 +21,7 @@
          $spData['stime'] = "";
          $spData['etime'] = "";
          $spData['scharges'] = "";
+         $spData['sdesc'] = "";
      }
 ?>
 <!DOCTYPE html>
@@ -35,6 +36,7 @@
     
     <div>
         <p>Name:<?php echo"$spData[sname]" ?></p>
+        <p>Description:<?php echo"$spData[sdesc]" ?></p>
         <p>Services:<?php echo"$spData[serv]" ?></p>
         <p>Charges:<?php echo"$spData[scharges]" ?></p>
         <p>Time:<?php echo"$spData[stime]" ?> - <?php echo"$spData[etime]" ?></p>

@@ -23,6 +23,7 @@
         $spData['stime'] = "";
         $spData['etime'] = "";
         $spData['scharges'] = "";
+        $spData['sdesc'] = "";
     }
 
 
@@ -37,12 +38,13 @@
         $ftime = $_POST['ftime'];
         $ttime = $_POST['ttime'];
         $rate = $_POST['rate'];
-        if(empty($sname) || empty($smail) || empty($mobno) || empty($serv) || empty($loc) || empty($ftime) || empty($ttime) || empty($rate)){
+        $desc = $_POST['desc'];
+        if(empty($sname) || empty($smail) || empty($mobno) || empty($serv) || empty($loc) || empty($ftime) || empty($ttime) || empty($rate)|| empty($desc)){
             echo "<script>alert('Please fill all the fields')</script>";
         }
         else{
             if($spData['sname'] == ""){
-                $insertSP = mysqli_query($conn, "INSERT INTO sproviders (id, sname, smail, smob, serv, slocation, stime, etime, scharges) VALUES ('$id2[id]', '$sname', '$smail', '$mobno', '$serv', '$loc', '$ftime', '$ttime', '$rate')");
+                $insertSP = mysqli_query($conn, "INSERT INTO sproviders (id, sname, smail, smob, serv, slocation, stime, etime, scharges, sdesc) VALUES ('$id2[id]', '$sname', '$smail', '$mobno', '$serv', '$loc', '$ftime', '$ttime', '$rate', '$desc')");
                 if($insertSP){
                     echo "<script>alert('Profile Added Successfully')</script>";
                     echo "<script>window.location.href='spdashboard.php'</script>";
@@ -51,7 +53,7 @@
                     echo "<script>alert('Profile Not Added')</script>";
                 }
             }else{
-                $updateSP = mysqli_query($conn, "UPDATE sproviders SET sname='$sname', smail='$smail', smob='$mobno', serv='$serv', slocation='$loc', stime='$ftime', etime='$ttime', scharges='$rate' WHERE id='$id2[id]'");
+                $updateSP = mysqli_query($conn, "UPDATE sproviders SET sname='$sname', smail='$smail', smob='$mobno', serv='$serv', slocation='$loc', stime='$ftime', etime='$ttime', scharges='$rate' , sdesc='$desc' WHERE id='$id2[id]'");
                 if($updateSP){
                     echo "<script>alert('Profile Updated Successfully')</script>";
                     echo "<script>window.location.href='spdashboard.php'</script>";
@@ -93,6 +95,9 @@
                     </div>
                     <div> <label for="mobno">Enter Your Mobile :</label>
                         <input type="tel" name="mobno" id="mobno"value="<?php echo"$spData[smob]" ?>">
+                    </div>
+                    <div> <label for="mobno">Enter Your Description :</label>
+                        <input type="tel" name="mobno" id="mobno"value="<?php echo"$spData[sdesc]" ?>">
                     </div>
                     <div> <label for="serv">Which Service Do You Provide ?</label>
                         <input type="text" name="serv" id="serv"value="<?php echo"$spData[serv]" ?>">
