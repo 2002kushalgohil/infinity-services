@@ -55,6 +55,10 @@
      include('conn.php');
      session_start();
      $usr = $_SESSION['sess_user'];
+
+     mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
+     $id = mysqli_query($conn, "SELECT id FROM login WHERE user_id='$usr'");
+    if (isset($_POST['add_prof'])) {
      $sname = $_POST['sname'];
      $smail = $_POST['smail'];
      $mobno = $_POST['mobno'];
@@ -63,12 +67,7 @@
      $ftime = $_POST['ftime'];
      $ttime = $_POST['ttime'];
      $rate = $_POST['rate'];
-
-     mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
-     $id = mysqli_query($conn, "SELECT id FROM login WHERE user_id='$usr'");
-    if (isset($_POST['add_prof'])) {
         if (!empty($_POST['sname']) && !empty($_POST['smail']) && !empty($_POST['mobno']) && !empty($_POST['serv']) && !empty($_POST['loc']) && !empty($_POST['ftime']) && !empty($_POST['ttime']) && !empty($_POST['rate'])) {
-           
            
             $idrows = mysqli_num_rows($id);
             if ($idrows != 0) {
@@ -86,21 +85,21 @@
             echo "<script>confirm('all fields are mandatory !')</script>";
         }
     }
-   echo"<script> console.log(".$id['id'].")<script>";
+
     $id2=mysqli_fetch_assoc($id);
     $sp_data = mysqli_query($conn, "SELECT * FROM sproviders WHERE id=$id2[id]");
     $sprows = mysqli_num_rows($sp_data);
     if ($sprows != 0) {
         while ($row = mysqli_fetch_assoc($sp_data)) {
-            echo "SP Id :".$row['id']." <br>";
-            echo ' Full Name : $row[sname]<br>';
-            echo ' Email ID : $row[smail] <br>';
-            echo ' Mobile No :$row[smob] <br>';
-            echo 'Service : $row[serv] <br>';
-            echo 'At Location : $row[slocation] <br>';
-            echo 'Available From $row[stime]';
-            echo ' To : $row[etime]<br>';
-            echo 'Service Charges :$row[scharges]';
+            echo "SP Id :$row[id] <br>";
+            echo "Full Name :$row[sname]<br>";
+            echo " Email ID :$row[smail] <br>";
+            echo " Mobile No :$row[smob] <br>";
+            echo "Service :$row[serv] <br>";
+            echo "At Location :$row[slocation] <br>";
+            echo "Available From $row[stime]";
+            echo " To :$row[etime]<br>";
+            echo "Service Charges :$row[scharges]";
         }
     }
 
