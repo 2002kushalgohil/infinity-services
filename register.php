@@ -2,22 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Assets/Styles/style.css?v=<?php echo time(); ?>">
-    <meta name="theme-color" content="#ffffff" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./Assets/Styles/style.css?v=<?php echo time(); ?>">
+  <meta name="theme-color" content="#ffffff" />
   <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
-    <title>Register @ Infinity</title>
+  <title>Register @ Infinity</title>
 </head>
 
 <body>
-<section class="lsSection">
+  <section class="lsSection">
     <div class="lsModal boxShadow1">
       <div class="lsModalSec1">
         <div class="lsModalLogoDiv">
-        <img src="./Assets/Images/infinityLoop2.gif" class="lsModalLogo" alt="" />
+          <img src="./Assets/Images/infinityLoop2.gif" class="lsModalLogo" alt="" />
           <p>Infinity Services</p>
         </div>
         <div class="lsModelForm">
@@ -32,7 +32,7 @@
               <option value="admin">Admin</option>
             </select>
             <div class="lsModelFormBottom">
-           <a href="login.php">Already a Member ?</a>
+              <a href="login.php">Already a Member ?</a>
               <button class="btn boxShadow1" type="submit" name="register" value="register">register</button>
             </div>
           </form>
@@ -49,33 +49,38 @@
   </section>
   <script src="./Assets/Scripts/script.js"></script>
 </body>
+
 </html>
 <?php
 include('conn.php');
 if (isset($_POST['register'])) {
-    if (!empty($_POST['user']) && !empty($_POST['password']) && !empty($_POST['stype'])) {
-        $user = strtolower($_POST['user']);
-        $pass = $_POST['password'];
-        $stype = strtolower($_POST['stype']);
-        mysqli_select_db($conn,'infinity') or die(mysqli_error($conn));
-        $query = mysqli_query($conn, "SELECT * FROM login WHERE user_id='" . $user . "' AND stype='" . $stype . "'");
-        $numrows = mysqli_num_rows($query);
-        if ($numrows == 0) {
-            $query = mysqli_query($conn, "INSERT INTO login(user_id,password,stype) VALUES ('$user','$pass','$stype')");
-            if ($query) {
-                echo '<script>';
-                echo 'alert("User Registered Successfully")';
-                echo '</script>';
-            }
-        } else {
-            echo '<script>';
-            echo 'alert("User Already Exits")';
-            echo '</script>';
-        }
-    } else {
+  if (!empty($_POST['user']) && !empty($_POST['password']) && !empty($_POST['stype'])) {
+    $user = strtolower($_POST['user']);
+    $pass = $_POST['password'];
+    $stype = strtolower($_POST['stype']);
+    mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
+    $query = mysqli_query($conn, "SELECT * FROM login WHERE user_id='$user'");
+    $numrows = mysqli_num_rows($query);
+    if ($numrows == 0) {
+      $query = mysqli_query($conn, "INSERT INTO login(id,user_id,password,stype) VALUES ('','$user','$pass','$stype')");
+      if ($query) {
         echo '<script>';
-        echo ' alert("All fields are required")';
+        echo 'alert("User Registered Successfully")';
         echo '</script>';
+      } else {
+        echo '<script>';
+        echo 'alert("Registration Failed")';
+        echo '</script>';
+      }
+    } else {
+      echo '<script>';
+      echo 'alert("User Already Exits")';
+      echo '</script>';
     }
+  } else {
+    echo '<script>';
+    echo ' alert("All fields are required")';
+    echo '</script>';
+  }
 }
 ?>

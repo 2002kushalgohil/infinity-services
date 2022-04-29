@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2022 at 07:32 AM
+-- Generation Time: Apr 29, 2022 at 11:01 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -49,23 +49,22 @@ CREATE TABLE IF NOT EXISTS `complaints` (
 --
 
 CREATE TABLE IF NOT EXISTS `login` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` varchar(50) NOT NULL,
   `password` varchar(8) NOT NULL,
   `stype` varchar(20) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `password` (`password`),
-  KEY `uid` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=103 ;
 
 --
 -- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`id`, `user_id`, `password`, `stype`) VALUES
-(201, 'abhinav', '12345', 'user'),
-(101, 'admin', '1234', 'admin'),
-(301, 'varun', '123', 'sp');
+(102, 'admin', '123', 'admin'),
+(101, 'varun', '1234', 'sp');
 
 -- --------------------------------------------------------
 
@@ -88,13 +87,6 @@ CREATE TABLE IF NOT EXISTS `services` (
   KEY `fk_uname` (`uname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `services`
---
-
-INSERT INTO `services` (`sid`, `service`, `sname`, `uname`, `accept_status`, `pay_status`, `ratings`, `adate`, `atime`) VALUES
-(1, 'Advocate', 'varun anand', 'abhinav bankar', 'pending', '-', 0, '2022-04-22', '10:40:20');
-
 -- --------------------------------------------------------
 
 --
@@ -106,23 +98,23 @@ CREATE TABLE IF NOT EXISTS `sproviders` (
   `sname` varchar(50) NOT NULL,
   `smail` varchar(50) NOT NULL,
   `smob` bigint(20) NOT NULL,
-  `service` varchar(50) NOT NULL,
+  `serv` varchar(50) NOT NULL,
   `slocation` varchar(25) DEFAULT NULL,
   `stime` time NOT NULL,
   `etime` time NOT NULL,
   `scharges` int(70) NOT NULL,
   UNIQUE KEY `smail` (`smail`),
   UNIQUE KEY `sname` (`sname`),
-  UNIQUE KEY `fk_service` (`service`),
-  KEY `sid` (`id`)
+  UNIQUE KEY `fk_service` (`serv`),
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sproviders`
 --
 
-INSERT INTO `sproviders` (`id`, `sname`, `smail`, `smob`, `service`, `slocation`, `stime`, `etime`, `scharges`) VALUES
-(301, 'varun anand', 'varunraj82786@gmail.com', 9552726547, 'Advocate', 'Ahmednagar', '02:00:00', '05:00:00', 399);
+INSERT INTO `sproviders` (`id`, `sname`, `smail`, `smob`, `serv`, `slocation`, `stime`, `etime`, `scharges`) VALUES
+(101, 'varun anand', 'varunraj82786@gmail.com', 9552726547, 'Advocate', '`Ahmednagar', '09:00:00', '13:30:00', 399);
 
 -- --------------------------------------------------------
 
@@ -136,16 +128,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `umail` varchar(50) NOT NULL,
   `umob` bigint(20) NOT NULL,
   `location` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uname` (`uname`,`umail`,`umob`)
+  UNIQUE KEY `uname` (`uname`),
+  KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `uname`, `umail`, `umob`, `location`) VALUES
-(201, 'abhinav bankar', 'abhinav789@gmail.com', 7974416421, 'shrirampur');
 
 --
 -- Constraints for dumped tables
@@ -155,7 +140,7 @@ INSERT INTO `users` (`id`, `uname`, `umail`, `umob`, `location`) VALUES
 -- Constraints for table `complaints`
 --
 ALTER TABLE `complaints`
-  ADD CONSTRAINT `fk_serve` FOREIGN KEY (`service`) REFERENCES `sproviders` (`service`),
+  ADD CONSTRAINT `fk_serve` FOREIGN KEY (`service`) REFERENCES `sproviders` (`serv`),
   ADD CONSTRAINT `fk_sname` FOREIGN KEY (`sname`) REFERENCES `sproviders` (`sname`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_uid` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_uname` FOREIGN KEY (`uname`) REFERENCES `users` (`uname`) ON DELETE CASCADE;
@@ -164,7 +149,7 @@ ALTER TABLE `complaints`
 -- Constraints for table `services`
 --
 ALTER TABLE `services`
-  ADD CONSTRAINT `fk_service` FOREIGN KEY (`service`) REFERENCES `sproviders` (`service`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_service` FOREIGN KEY (`service`) REFERENCES `sproviders` (`serv`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_sname2` FOREIGN KEY (`sname`) REFERENCES `sproviders` (`sname`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_uname2` FOREIGN KEY (`uname`) REFERENCES `users` (`uname`) ON DELETE CASCADE;
 

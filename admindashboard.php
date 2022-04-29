@@ -8,6 +8,10 @@
 </head>
 <body>
     <div>
+        <button><a href="logout.php">Logout</a>
+        </button>
+    </div>
+    <div>
     <div>
         <h1>Admin Reports</h1>
     </div>
