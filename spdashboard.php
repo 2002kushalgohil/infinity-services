@@ -56,6 +56,7 @@
                     <div class="lsModelFormBottom">
                         <a></a>
                         <a href="spupdate.php" class="btn boxShadow1" type="submit" name="add_prof">Edit Profile</a>
+                        <a href="./logout.php" class="btn boxShadow1" >Logout</a>
                     </div>
                 </div>
                 <div class="lsModalTermsDiv"></div>

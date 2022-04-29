@@ -92,7 +92,7 @@
                         <input class="inputBx inputBxHalf boxShadow1Hover" type="time" name="ttime" value="<?php echo"$spData[etime]" ?>">
                         <input class="inputBx boxShadow1Hover" placeholder="Charges per Hour" type="number" name="rate" value="<?php echo"$spData[scharges]" ?>">
                         <div class="lsModelFormBottom">
-                            <a></a>
+                            <a href="./spdashboard.php">I will do it later !</a>
                             <button class="btn boxShadow1" type="submit" name="add_prof"><?php echo"$btnText" ?></button>
                         </div>
                 </form>
