@@ -38,7 +38,7 @@
         $ftime = $_POST['ftime'];
         $ttime = $_POST['ttime'];
         $rate = $_POST['rate'];
-        $desc = $_POST['desc'];
+        $desc = $_POST['sdesc'];
         if(empty($sname) || empty($smail) || empty($mobno) || empty($serv) || empty($loc) || empty($ftime) || empty($ttime) || empty($rate)|| empty($desc)){
             echo "<script>alert('Please fill all the fields')</script>";
         }
@@ -97,7 +97,7 @@
                         <input type="tel" name="mobno" id="mobno"value="<?php echo"$spData[smob]" ?>">
                     </div>
                     <div> <label for="mobno">Enter Your Description :</label>
-                        <input type="tel" name="mobno" id="mobno"value="<?php echo"$spData[sdesc]" ?>">
+                        <input type="tel" name="sdesc" id="mobno"value="<?php echo"$spData[sdesc]" ?>">
                     </div>
                     <div> <label for="serv">Which Service Do You Provide ?</label>
                         <input type="text" name="serv" id="serv"value="<?php echo"$spData[serv]" ?>">
