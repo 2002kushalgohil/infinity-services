@@ -1,3 +1,19 @@
+<?php
+     //  ----------------- Include Connection file --------------------
+     include ("conn.php");
+
+     //  ----------------- Session start --------------------
+     session_start();
+     $userName = $_SESSION['sess_user'];
+     
+     // -------------------- Fetch user Id from dtabase --------------------
+     mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
+     $userId = mysqli_query($conn, "SELECT id FROM Login WHERE user_id= '$userName'");
+     $id2=mysqli_fetch_assoc($userId);
+     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM sproviders");
+     $spDataRows = mysqli_num_rows($unFIlteredSPData);
+     
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,6 +71,11 @@
             </div>
         </div>
         <div class="userDashBoardCardMainDiv">
+        <?php
+            if($spDataRows!=0){
+                while($allServices = mysqli_fetch_assoc($unFIlteredSPData)){            
+        ?>
+        
             <div class="userDashBoardCard boxShadow1Hover">
                 <div class="userDashBoardCardOverlay">
                     <div class="userDashBoardCardOverlaySub1">
@@ -68,59 +89,19 @@
                         </p>
                     </div>
                     <div class="userDashBoardCardOverlaySub2">
-                        <h2>Varun Anand</h2>
+                        <h2><?php echo"$allServices[sname]"?></h2>
                         <div class="userDashboardCardOverlayBottomDiv">
-                            <p>Advocate</p>
-                            <p>₹399 Hour</p>
+                            <p><?php echo"$allServices[serv]"?></p>
+                            <p>₹<?php echo"$allServices[scharges]"?> Hour</p>
                         </div>
                     </div>
                 </div>
-                <img src="./Assets/Images/advocate.gif" class="userDashBoardCardBgImg" alt="" />
+                <img src="./Assets/Images/<?php echo"$allServices[serv]"?>.gif" class="userDashBoardCardBgImg" alt="" />
             </div>
-            <div class="userDashBoardCard boxShadow1Hover">
-                <div class="userDashBoardCardOverlay">
-                    <div class="userDashBoardCardOverlaySub1">
-                        <div class="userDashBoardCardOverlaySub1ButtonDiv">
-                            <button class="btn">Book my Service</button>
-                            <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
-                        </div>
-                        <p>
-                            I am ______ having 5 years of experience in this Lorem ipsum
-                            dolor sit amet,x consectetur adipisicing elit. Eos, quia?
-                        </p>
-                    </div>
-                    <div class="userDashBoardCardOverlaySub2">
-                        <h2>Kushal Gohil</h2>
-                        <div class="userDashboardCardOverlayBottomDiv">
-                            <p>Electrician</p>
-                            <p>₹299 Hour</p>
-                        </div>
-                    </div>
-                </div>
-                <img src="./Assets/Images/electrician.gif" class="userDashBoardCardBgImg" alt="" />
-            </div>
-            <div class="userDashBoardCard boxShadow1Hover">
-                <div class="userDashBoardCardOverlay">
-                    <div class="userDashBoardCardOverlaySub1">
-                        <div class="userDashBoardCardOverlaySub1ButtonDiv">
-                            <button class="btn">Book my Service</button>
-                            <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
-                        </div>
-                        <p>
-                            I am ______ having 5 years of experience in this Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit. Eos, quia?
-                        </p>
-                    </div>
-                    <div class="userDashBoardCardOverlaySub2">
-                        <h2>Abhinav Bankar</h2>
-                        <div class="userDashboardCardOverlayBottomDiv">
-                            <p>Mechanic</p>
-                            <p>₹199 Hour</p>
-                        </div>
-                    </div>
-                </div>
-                <img src="./Assets/Images/mechanic.gif" class="userDashBoardCardBgImg" alt="" />
-            </div>
+        <?php
+                }
+            }
+        ?>
         </div>
     </section>
 
