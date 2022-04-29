@@ -42,7 +42,7 @@
           <a>Privacy-Policy</a>
         </div>
       </div>
-      <div class="lsModalSec2">
+      <div class="lsModalSec2 lsModalSec2YelloBg">
         <img src="./Assets/Images/lsImg4.gif" alt="" />
       </div>
     </div>

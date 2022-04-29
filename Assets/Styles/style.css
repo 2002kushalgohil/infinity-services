@@ -85,7 +85,7 @@ body {
   background-color: var(--main-Background-Color);
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
@@ -168,6 +168,10 @@ html{
   border-color: var(--blue-Color);
 }
 
+.inputBxHalf{
+  width: 49%!important;
+}
+
 /* --------------------------------- Navbar ---------------------------------*/
 
 nav {
@@ -202,13 +206,12 @@ nav ul li {
   cursor: pointer;
 }
 
-
 @media (max-width: 550px) {
   nav {
     flex-direction: column;
     height: auto;
   }
-  .navImg{
+  .navImg {
     margin-bottom: var(--mp-Main);
     align-self: flex-start;
   }
@@ -435,6 +438,10 @@ nav ul li {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #fff;
+}
+
+.lsModalSec2YelloBg{
   background-color: #fff0d9;
 }
 
@@ -472,6 +479,27 @@ nav ul li {
   margin: var(--mp-Large) 0px var(--mp-Large) 0px;
   width: 100%;
   padding: 0px 60px;
+  overflow-y: scroll;
+}
+/* width */
+.lsModelForm::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.lsModelForm::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.lsModelForm::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+.lsModelForm::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .lsModelForm input,
@@ -480,9 +508,34 @@ nav ul li {
 .lsModelForm a {
   margin-top: var(--mp-Main);
 }
+
 .lsModelForm a {
   display: inline-block;
   margin-right: var(--mp-Main);
+}
+
+.lsModelForm ul li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: var(--mp-Secondary);
+}
+
+.lsModelForm ul li:last-child {
+  margin-bottom: var(--mp-Main);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lsModelForm ul {
+  margin-top: var(--mp-Main);
+}
+
+.lsModelForm ul li h3{
+  margin-right: var(--mp-Secondary);
 }
 
 .lsModelFormBottom {

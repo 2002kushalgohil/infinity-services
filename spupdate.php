@@ -12,7 +12,8 @@
     $id2=mysqli_fetch_assoc($userId);
     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM sproviders WHERE id= '$id2[id]'");
     $spData = mysqli_fetch_array($unFIlteredSPData);
-
+    $btnText = "Update";
+    $headingText = "Update Your Profile";
     // if $spData is empty the make it as an empty array
     if(!$spData){
         $spData['sname'] = "";
@@ -24,9 +25,9 @@
         $spData['etime'] = "";
         $spData['scharges'] = "";
         $spData['sdesc'] = "";
+        $btnText = "Create Profile";
+        $headingText = "Create Profile";
     }
-
-
 
     // ------------------ Sending Data to server as per condition --------------------
     if(isset($_POST['add_prof'])){
@@ -46,20 +47,18 @@
             if($spData['sname'] == ""){
                 $insertSP = mysqli_query($conn, "INSERT INTO sproviders (id, sname, smail, smob, serv, slocation, stime, etime, scharges, sdesc) VALUES ('$id2[id]', '$sname', '$smail', '$mobno', '$serv', '$loc', '$ftime', '$ttime', '$rate', '$desc')");
                 if($insertSP){
-                    echo "<script>alert('Profile Added Successfully')</script>";
                     echo "<script>window.location.href='spdashboard.php'</script>";
                 }
                 else{
-                    echo "<script>alert('Profile Not Added')</script>";
+                    echo "<script>alert('Something Went Wrong')</script>";
                 }
             }else{
                 $updateSP = mysqli_query($conn, "UPDATE sproviders SET sname='$sname', smail='$smail', smob='$mobno', serv='$serv', slocation='$loc', stime='$ftime', etime='$ttime', scharges='$rate' , sdesc='$desc' WHERE id='$id2[id]'");
                 if($updateSP){
-                    echo "<script>alert('Profile Updated Successfully')</script>";
                     echo "<script>window.location.href='spdashboard.php'</script>";
                 }
                 else{
-                    echo "<script>alert('Profile Not Updated')</script>";
+                    echo "<script>alert('Something Went Wrong')</script>";
                 }
             }
         }
@@ -78,54 +77,31 @@
 </head>
 
 <body>
-
-    <div>
-        <div>
-            My Profile
+    <section class="lsSection">
+        <div class="lsModal boxShadow1">
+            <div class="lsModalSec1">
+                <form action="" method="POST" class="lsModelForm">
+                    <h2><?php echo"$headingText" ?></h2>
+                        <input class="inputBx boxShadow1Hover" placeholder="Full Name" type="text" name="sname" value="<?php echo"$spData[sname]" ?>">
+                        <input class="inputBx boxShadow1Hover" placeholder="Email Address" type="email" name="smail" value="<?php echo"$spData[smail]" ?>">
+                        <input class="inputBx boxShadow1Hover" placeholder="Mobile Number" type="tel" name="mobno" value="<?php echo"$spData[smob]" ?>">
+                        <input class="inputBx boxShadow1Hover" placeholder="Description" type="text" name="sdesc" value="<?php echo"$spData[sdesc]" ?>">
+                        <input class="inputBx boxShadow1Hover" placeholder="Service" type="text" name="serv" value="<?php echo"$spData[serv]" ?>">
+                        <input class="inputBx boxShadow1Hover" placeholder="Location" type="text" name="loc" value="<?php echo"$spData[slocation]" ?>">
+                        <input class="inputBx inputBxHalf boxShadow1Hover" type="time" name="ftime" value="<?php echo"$spData[stime]" ?>">
+                        <input class="inputBx inputBxHalf boxShadow1Hover" type="time" name="ttime" value="<?php echo"$spData[etime]" ?>">
+                        <input class="inputBx boxShadow1Hover" placeholder="Charges per Hour" type="number" name="rate" value="<?php echo"$spData[scharges]" ?>">
+                        <div class="lsModelFormBottom">
+                            <a></a>
+                            <button class="btn boxShadow1" type="submit" name="add_prof"><?php echo"$btnText" ?></button>
+                        </div>
+                </form>
+            </div>
+            <div class="lsModalSec2">
+                <img src="./Assets/Images/updateAccount.gif" alt="" />
+            </div>
         </div>
-        <div>
-            <form action="" method="POST">
-                <fieldset>
-                    <div><label for="sname">What is your full name ?</label>
-                        <input type="text" name="sname" id="sname" value="<?php echo"$spData[sname]" ?>">
-                    </div>
-                    <div>
-                        <label for="smail">enter Your email :</label>
-                        <input type="email" name="smail" id="smail"value="<?php echo"$spData[smail]" ?>">
-                    </div>
-                    <div> <label for="mobno">Enter Your Mobile :</label>
-                        <input type="tel" name="mobno" id="mobno"value="<?php echo"$spData[smob]" ?>">
-                    </div>
-                    <div> <label for="mobno">Enter Your Description :</label>
-                        <input type="tel" name="sdesc" id="mobno"value="<?php echo"$spData[sdesc]" ?>">
-                    </div>
-                    <div> <label for="serv">Which Service Do You Provide ?</label>
-                        <input type="text" name="serv" id="serv"value="<?php echo"$spData[serv]" ?>">
-                    </div>
-                    <div> <label for="loc">From Where Do You Serve ?</label>
-                        <input type="text" name="loc" id="loc"value="<?php echo"$spData[slocation]" ?>">
-                    </div>
-                    <div> <label for="time">May I know Your Time of available ?</label>
-                        <input type="time" name=ftime id="time"value="<?php echo"$spData[stime]" ?>">
-                        <input type="time" name=ttime id="time"value="<?php echo"$spData[etime]" ?>">
-                    </div>
-                    <div>
-                        <label for="rate">What's Your Service Charges ?</label>
-                        <input type="number" name="rate" id="rate"value="<?php echo"$spData[scharges]" ?>">
-                    </div>
-                    <div>
-                        <button type="submit" name="add_prof">Add Profile</button>
-                    </div>
-                </fieldset>
-
-            </form>
-        </div>
-    </div>
-    
-
-    <?php 
-        
-    ?>
+    </section>
 </body>
 
 </html>
