@@ -44,7 +44,7 @@
 <nav class="glass">
         <a href="#home"><img src="../Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
-            <li><a href='./index.php'>Dashboard</a></li>
+            <li><a href='./'>Dashboard</a></li>
             <li><a href='../logout.php'>Logout</a></li>
         </ul>
     </nav>
@@ -62,6 +62,7 @@
                         <li><h3>Email:</h3> <p><?php echo"$spData[umail]" ?></p> </li>
                         <li><h3>Mobile:</h3> <p><?php echo"$spData[umob]" ?></p></li> 
                         <li><h3>Location:</h3> <p><?php echo"$spData[location]" ?></p></li>
+                        <li></li>
                     </ul>
                     <div class="lsModelFormBottom">
                         <a href=""></a>
