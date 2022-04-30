@@ -89,6 +89,10 @@ html {
   scroll-behavior: smooth;
 }
 
+#mainSectionSmall{
+  height: 90vh;
+}
+
 /* --------------------------------- Box Shadow ---------------------------------*/
 
 .boxShadow1Hover:hover {

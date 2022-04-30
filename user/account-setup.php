@@ -1,6 +1,6 @@
 <?php
     //  ----------------- Include Connection file --------------------
-    include ("conn.php");
+    include ("../conn.php");
 
     //  ----------------- Session start --------------------
     session_start();
@@ -46,7 +46,7 @@
             if($spData['uname'] == ""){
                 $sql = "INSERT INTO users (id, uname, umail, umob, location) VALUES ('$id2[id]', '$uname', '$uemail', '$umobno', '$location')";
                 if(mysqli_query($conn, $sql)){
-                    echo "<script>window.location.href='user-profile.php'</script>";
+                    echo "<script>window.location.href='profile.php'</script>";
                 }
                 else{
                     echo "<script>alert('Something Went Wrong')</script>";
@@ -55,7 +55,7 @@
             else{
                 $sql = "UPDATE users SET uname='$uname', umail='$uemail', umob='$umobno', location='$location' WHERE id='$id2[id]'";
                 if(mysqli_query($conn, $sql)){
-                    echo "<script>window.location.href='user-profile.php'</script>";
+                    echo "<script>window.location.href='profile.php'</script>";
                 }
                 else{
                     echo "<script>alert('Something Went Wrong')</script>";
@@ -71,26 +71,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Assets/Styles/style.css?v=<?php echo time(); ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
+    <link rel="stylesheet" href="../Assets/Styles/style.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Assets/Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Assets/Favicons/favicon-16x16.png">
     <meta name="theme-color" content="#ffffff">
     <title><?php echo"$headingText" ?></title>
 </head>
 
 <body>
 <nav class="glass">
-        <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
+        <a href="#home"><img src="../Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
-            <li><a href='./user-dashboard.php'>Dashboard</a></li>
-            <li><a href='logout.php'>Logout</a></li>
+            <li><a href='./index.php'>Dashboard</a></li>
+            <li><a href='../logout.php'>Logout</a></li>
         </ul>
     </nav>
-    <section class="lsSection">
+    <section class="lsSection"id="mainSectionSmall">
         <div class="lsModal boxShadow1">
             <div class="lsModalSec1">
             <div class="lsModalLogoDiv">
-                    <img src="./Assets/Images/infinityLoop2.gif" class="lsModalLogo" alt="" />
+                    <img src="../Assets/Images/infinityLoop2.gif" class="lsModalLogo" alt="" />
                     <p>Infinity Services</p>
                 </div>
                 <form action="" method="POST" class="lsModelForm">
@@ -100,18 +100,18 @@
                         <input class="inputBx boxShadow1Hover" placeholder="Mobile Number" type="tel" name="umob" value="<?php echo"$spData[umob]" ?>">
                         <input class="inputBx boxShadow1Hover" placeholder="Location" type="text" name="location" value="<?php echo"$spData[location]" ?>">
                         <div class="lsModelFormBottom">
-                            <a href="./user-profile.php"><?php echo"$newLoginRedirect" ?></a>
+                            <a href="./profile.php"><?php echo"$newLoginRedirect" ?></a>
                             <button class="btn boxShadow1" type="submit" name="add_prof"><?php echo"$btnText" ?></button>
                         </div>
                 </form>
                 <div class="lsModalTermsDiv"></div>
             </div>
             <div class="lsModalSec2">
-                <img src="./Assets/Images/updateAccount.gif" alt="" />
+                <img src="../Assets/Images/updateAccount.gif" alt="" />
             </div>
         </div>
     </section>
-    <script src="./Assets/Scripts/script.js"></script>
+    <script src="../Assets/Scripts/script.js"></script>
 </body>
 
 </html>

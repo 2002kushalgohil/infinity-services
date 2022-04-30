@@ -1,6 +1,6 @@
 <?php
      //  ----------------- Include Connection file --------------------
-     include ("conn.php");
+     include ("../conn.php");
 
      //  ----------------- Session start --------------------
      session_start();
@@ -26,19 +26,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./Assets/Styles/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../Assets/Styles/style.css?v=<?php echo time(); ?>">
     <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Assets/Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Assets/Favicons/favicon-16x16.png">
     <title>Infinity Services</title>
 </head>
 
 <body>
     <nav class="glass">
-        <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
+        <a href="#home"><img src="../Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
-            <li><a href='./user-profile.php'>Profile</a></li>
-            <li><a href='logout.php'>Logout</a></li>
+            <li><a href='./profile.php'>Profile</a></li>
+            <li><a href='../logout.php'>Logout</a></li>
         </ul>
     </nav>
     <section class="mainSection">
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="./Assets/Images/Services/<?php echo"$allServices[serv]"?>.gif" class="userDashBoardCardBgImg" alt="" />
+                <img src="../Assets/Images/Services/<?php echo"$allServices[serv]"?>.gif" class="userDashBoardCardBgImg" alt="" />
             </div>
         <?php
                 }
@@ -106,7 +106,7 @@
         </div>
     </section>
 
-    <script src="./Assets/Scripts/script.js"></script>
+    <script src="../Assets/Scripts/script.js"></script>
 </body>
 
 </html>
