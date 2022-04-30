@@ -56,7 +56,7 @@
             if($spData['sname'] == ""){
                 $insertSP = mysqli_query($conn, "INSERT INTO sproviders (id, sname, smail, smob, serv, slocation, stime, etime, scharges, sdesc) VALUES ('$id2[id]', '$sname', '$smail', '$mobno', '$serv', '$loc', '$ftime', '$ttime', '$rate', '$desc')");
                 if($insertSP){
-                    echo "<script>window.location.href='service-provider-dashboard.php'</script>";
+                    echo "<script>window.location.href='service-provider-profile.php'</script>";
                 }
                 else{
                     echo "<script>alert('Something Went Wrong')</script>";
@@ -64,7 +64,7 @@
             }else{
                 $updateSP = mysqli_query($conn, "UPDATE sproviders SET sname='$sname', smail='$smail', smob='$mobno', serv='$serv', slocation='$loc', stime='$ftime', etime='$ttime', scharges='$rate' , sdesc='$desc' WHERE id='$id2[id]'");
                 if($updateSP){
-                    echo "<script>window.location.href='service-provider-dashboard.php'</script>";
+                    echo "<script>window.location.href='service-provider-profile.php'</script>";
                 }
                 else{
                     echo "<script>alert('Something Went Wrong')</script>";
@@ -79,10 +79,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./Assets/Styles/style.css?v=<?php echo time(); ?>">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service provider @ infinity</title>
+    <link rel="stylesheet" href="./Assets/Styles/style.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
+    <meta name="theme-color" content="#ffffff">
+    <title><?php echo"$headingText" ?></title>
 </head>
 
 <body>
@@ -110,7 +112,7 @@
                         <input class="inputBx inputBxHalf boxShadow1Hover" type="time" name="ttime" value="<?php echo"$spData[etime]" ?>">
                         <input class="inputBx boxShadow1Hover" placeholder="Charges per Hour" type="number" name="rate" value="<?php echo"$spData[scharges]" ?>">
                         <div class="lsModelFormBottom">
-                            <a href="./service-provider-dashboard.php"><?php echo"$newLoginRedirect" ?></a>
+                            <a href="./service-provider-profile.php"><?php echo"$newLoginRedirect" ?></a>
                             <button class="btn boxShadow1" type="submit" name="add_prof"><?php echo"$btnText" ?></button>
                         </div>
                 </form>
@@ -120,6 +122,7 @@
             </div>
         </div>
     </section>
+    <script src="./Assets/Scripts/script.js"></script>
 </body>
 
 </html>

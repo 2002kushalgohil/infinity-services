@@ -69,7 +69,7 @@ if (isset($_POST['login'])) {
                    break;
                    case'admin':header("location:admindashboard.php");
                    break;
-                   case'sp':header("location:service-provider-dashboard.php");
+                   case'sp':header("location:service-provider-profile.php");
                    break;
                }
             } else {

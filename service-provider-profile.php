@@ -21,7 +21,7 @@
  
      // if $spData is empty the make it as an empty array
      if(!$spData){
-        header("Location: service-provider-account.php");
+        header("Location: service-provider-account-setup.php");
          $spData['sname'] = "";
          $spData['serv'] = "";
          $spData['stime'] = "";
@@ -40,7 +40,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Favicons/favicon-16x16.png">
     <meta name="theme-color" content="#ffffff">
-    <title>Document</title>
+    <title>Profile</title>
 </head>
 <body>
 <section class="lsSection">
@@ -59,7 +59,7 @@
                         <li><h3>Description:</h3> <p><?php echo"$spData[sdesc]" ?></p></li>
                     </ul>
                     <div class="lsModelFormBottom">
-                        <a href="service-provider-account.php" class="btn boxShadow1" type="submit" name="add_prof">Edit Profile</a>
+                        <a href="service-provider-account-setup.php" class="btn boxShadow1" type="submit" name="add_prof">Edit Profile</a>
                         <a href="./logout.php" class="btn boxShadow1" >Logout</a>
                     </div>
                 </div>
