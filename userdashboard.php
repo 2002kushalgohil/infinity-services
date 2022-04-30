@@ -6,6 +6,11 @@
      session_start();
      $userName = $_SESSION['sess_user'];
      
+     //------------------------- if not authenticated redirect to login page --------------------
+    if(!isset($_SESSION['sess_user'])){
+        header("Location: login.php");
+    }
+     
      // -------------------- Fetch user Id from dtabase --------------------
      mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
      $userId = mysqli_query($conn, "SELECT id FROM Login WHERE user_id= '$userName'");
@@ -32,9 +37,7 @@
     <nav class="glass">
         <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
-            <a href="#about"><li><button class="btn btnWhite">About</button></li></a>
-            <a href="#services"><li><button class="btn btnWhite">Services</button></li></a>
-            <a href="register.php"><li><button class="btn btnWhite">Register</button></li></a>
+            <a href="./logout.php"><li><button class="btn btnWhite">Log out</button></li></a>
         </ul>
     </nav>
     <section class="mainSection">
@@ -83,7 +86,7 @@
                             <button class="btn">Book my Service</button>
                             <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
                         </div>
-                        <p><?php echo"$allServices[sdesc]"?></p>
+                        <p class="userDashboardDescription"><?php echo"$allServices[sdesc]"?></p>
                     </div>
                     <div class="userDashBoardCardOverlaySub2">
                         <h2><?php echo"$allServices[sname]"?></h2>
@@ -93,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="./Assets/Images/<?php echo"$allServices[serv]"?>.gif" class="userDashBoardCardBgImg" alt="" />
+                <img src="./Assets/Images/Services/<?php echo"$allServices[serv]"?>.gif" class="userDashBoardCardBgImg" alt="" />
             </div>
         <?php
                 }

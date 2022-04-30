@@ -28,12 +28,6 @@
                     <form action="" method="POST">
                         <input type="text" class="inputBx boxShadow1Hover" placeholder="Enter Username" name="user" />
                         <input type="password" class="inputBx boxShadow1Hover" placeholder="Enter Password" name="password" />
-                        <select class="inputBx boxShadow1Hover" name="stype">
-                            <option value="" selected>I am A ...</option>
-                            <option value="user">Service User</option>
-                            <option value="sp">Service Provider</option>
-                            <option value="admin">Admin</option>
-                        </select>
                         <div class="lsModelFormBottom">
                             <a href="register.php">Join with us</a>
                             <button class="btn boxShadow1" type="submit" name="login" value="login">Login</button>
@@ -54,29 +48,28 @@
 </body>
 <?php
 if (isset($_POST['login'])) {
-    if (!empty($_POST['user']) && !empty($_POST['password']) && !empty($_POST['stype'])) {
+    if (!empty($_POST['user']) && !empty($_POST['password'])) {
         $usr = strtolower($_POST['user']);
         $pswd = $_POST['password'];
-        $stype = strtolower($_POST['stype']);
         include('conn.php');
         mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
         $query = mysqli_query($conn, "SELECT * FROM login WHERE `user_id`='{$usr}'");
         $numrows = mysqli_num_rows($query);
         if ($numrows != 0) {
             while ($row = mysqli_fetch_assoc($query)) {
-                $db_stype = $row['stype'];
+                $db_user = $row['user_id'];
                 $db_pswd = $row['password'];
+                $db_stype = $row['stype'];
             }
-            if ($db_pswd == $pswd && $db_stype == $stype) {
-
+            if ($db_pswd == $pswd && $db_user == $usr) {
                 session_start();
                 $_SESSION['sess_user'] = $usr;
-               switch($stype){
+               switch($db_stype){
                    case'user':header("location:userdashboard.php");
                    break;
                    case'admin':header("location:admindashboard.php");
                    break;
-                   case'sp':header("location:spdashboard.php");
+                   case'sp':header("location:service-provider-dashboard.php");
                    break;
                }
             } else {

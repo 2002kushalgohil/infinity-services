@@ -164,6 +164,10 @@ html {
   border-color: var(--blue-Color);
 }
 
+.inputBx:focus {
+  border-color: var(--blue-Color);
+}
+
 .inputBx:hover {
   border-color: var(--blue-Color);
 }
@@ -300,6 +304,11 @@ nav ul li {
   height: 300px;
 }
 
+.userDashBoardCard:hover .userDashboardDescription {
+  -webkit-line-clamp: 5;
+}
+
+
 .userDashBoardCardOverlay {
   display: flex;
   align-items: flex-start;
@@ -342,6 +351,14 @@ nav ul li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.userDashboardDescription {
+  margin-bottom: var(--mp-Main);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .userDashboardCardStar {

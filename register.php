@@ -26,10 +26,8 @@
             <input type="text" class="inputBx boxShadow1Hover" placeholder="Enter Username" name="user" />
             <input type="password" class="inputBx boxShadow1Hover" placeholder="Enter Password" name="password" />
             <select class="inputBx boxShadow1Hover" name="stype">
-              <option value="" selected>I am A ...</option>
-              <option value="user">Service User</option>
+              <option value="user"selected>User</option>
               <option value="sp">Service Provider</option>
-              <option value="admin">Admin</option>
             </select>
             <div class="lsModelFormBottom">
               <a href="login.php">Already a Member ?</a>
@@ -67,6 +65,7 @@ if (isset($_POST['register'])) {
         echo '<script>';
         echo 'alert("User Registered Successfully")';
         echo '</script>';
+        echo "<script>window.location.href='login.php'</script>";
       } else {
         echo '<script>';
         echo 'alert("Registration Failed")';

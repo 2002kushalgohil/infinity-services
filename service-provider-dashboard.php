@@ -6,6 +6,11 @@
      //  ----------------- Session start --------------------
      session_start();
      $userName = $_SESSION['sess_user'];
+
+    //------------------------- if not authenticated redirect to login page --------------------
+    if(!isset($_SESSION['sess_user'])){
+        header("Location: login.php");
+    }
      
      // -------------------- Fetch user Id from dtabase --------------------
      mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
@@ -16,7 +21,7 @@
  
      // if $spData is empty the make it as an empty array
      if(!$spData){
-        header("Location: spupdate.php");
+        header("Location: service-provider-account.php");
          $spData['sname'] = "";
          $spData['serv'] = "";
          $spData['stime'] = "";
@@ -54,16 +59,15 @@
                         <li><h3>Description:</h3> <p><?php echo"$spData[sdesc]" ?></p></li>
                     </ul>
                     <div class="lsModelFormBottom">
-                        <a></a>
-                        <a href="spupdate.php" class="btn boxShadow1" type="submit" name="add_prof">Edit Profile</a>
+                        <a href="service-provider-account.php" class="btn boxShadow1" type="submit" name="add_prof">Edit Profile</a>
                         <a href="./logout.php" class="btn boxShadow1" >Logout</a>
                     </div>
                 </div>
                 <div class="lsModalTermsDiv"></div>
             </div>
-            <!-- <div class="lsModalSec2">
+            <div class="lsModalSec2">
                 <img src="./Assets/Images/updateAccount.gif" alt="" />
-            </div> -->
+            </div>
         </div>
     </section>
     <script src="./Assets/Scripts/script.js"></script>
