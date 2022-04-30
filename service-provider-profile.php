@@ -46,7 +46,7 @@
 <nav class="glass">
         <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
-                <li><a href=''>Dashboard</a></li>
+                <!-- <li><a href=''>Dashboard</a></li> -->
                 <li><a href='logout.php'>Logout</a></li>
         </ul>
     </nav>
@@ -66,8 +66,8 @@
                         <li><h3>Description:</h3> <p><?php echo"$spData[sdesc]" ?></p></li>
                     </ul>
                     <div class="lsModelFormBottom">
+                        <a href=""></a>
                         <a href="service-provider-account-setup.php" class="btn boxShadow1" type="submit" name="add_prof">Edit Profile</a>
-                        <a href="./logout.php" class="btn boxShadow1" >Logout</a>
                     </div>
                 </div>
                 <div class="lsModalTermsDiv"></div>
