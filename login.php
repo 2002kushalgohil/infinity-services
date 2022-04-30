@@ -65,7 +65,7 @@ if (isset($_POST['login'])) {
                 session_start();
                 $_SESSION['sess_user'] = $usr;
                switch($db_stype){
-                   case'user':header("location:userdashboard.php");
+                   case'user':header("location:user-profile.php");
                    break;
                    case'admin':header("location:admindashboard.php");
                    break;

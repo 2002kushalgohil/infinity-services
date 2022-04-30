@@ -37,7 +37,8 @@
     <nav class="glass">
         <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
-            <a href="./logout.php"><li><button class="btn btnWhite">Log out</button></li></a>
+            <li><a href='./user-profile.php'>Profile</a></li>
+            <li><a href='logout.php'>Logout</a></li>
         </ul>
     </nav>
     <section class="mainSection">

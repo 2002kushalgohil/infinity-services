@@ -182,9 +182,9 @@ nav {
   height: 65px;
   padding: var(--mp-Main) var(--mp-Large);
   border-bottom: 1px solid var(--border-Color);
-  position: fixed;
+  /* position: fixed; */
+  /* top: 0; */
   width: 100%;
-  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

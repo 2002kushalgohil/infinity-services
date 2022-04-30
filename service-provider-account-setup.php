@@ -88,6 +88,13 @@
 </head>
 
 <body>
+<nav class="glass">
+        <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
+            <ul>
+                <li><a href='service-provider-profile.php'>Profile</a></li>
+                <li><a href='logout.php'>Logout</a></li>
+        </ul>
+    </nav>
     <section class="lsSection">
         <div class="lsModal boxShadow1">
             <div class="lsModalSec1">

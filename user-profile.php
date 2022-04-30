@@ -16,18 +16,16 @@
      mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
      $userId = mysqli_query($conn, "SELECT id FROM Login WHERE user_id= '$userName'");
      $id2=mysqli_fetch_assoc($userId);
-     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM sproviders WHERE id= '$id2[id]'");
+     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM users WHERE id= '$id2[id]'");
      $spData = mysqli_fetch_array($unFIlteredSPData);
  
      // if $spData is empty the make it as an empty array
      if(!$spData){
-        header("Location: service-provider-account-setup.php");
-         $spData['sname'] = "";
-         $spData['serv'] = "";
-         $spData['stime'] = "";
-         $spData['etime'] = "";
-         $spData['scharges'] = "";
-         $spData['sdesc'] = "";
+        header("Location: user-account-setup.php");
+         $spData['uname'] = "";
+         $spData['umail'] = "";
+         $spData['umob'] = "";
+         $spData['location'] = "";
      }
 ?>
 <!DOCTYPE html>
@@ -46,8 +44,8 @@
 <nav class="glass">
         <a href="#home"><img src="./Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
-                <li><a href=''>Dashboard</a></li>
-                <li><a href='logout.php'>Logout</a></li>
+            <li><a href='./user-dashboard.php'>Dashboard</a></li>
+            <li><a href='logout.php'>Logout</a></li>
         </ul>
     </nav>
 <section class="lsSection">
@@ -58,17 +56,16 @@
                     <p>Infinity Services</p>
             </div>
                 <div class="lsModelForm">
-                    <h2>Welcome <?php echo"$spData[sname]" ?></h2>
+                    <h2>Welcome <?php echo"$spData[uname]" ?></h2>
                     <ul>
-                        <li><h3>Service:</h3> <p><?php echo"$spData[serv]" ?></p></li>
-                        <li><h3>Charges:</h3> <p><?php echo"$spData[scharges]" ?></p> </li>
-                        <li><h3>Time:</h3> <p><?php echo"$spData[stime]" ?> - <?php echo"$spData[etime]" ?></p></li> 
-                        <li><h3>Description:</h3> <p><?php echo"$spData[sdesc]" ?></p></li>
+                        <li><h3>Name:</h3> <p><?php echo"$spData[uname]" ?></p></li>
+                        <li><h3>Email:</h3> <p><?php echo"$spData[umail]" ?></p> </li>
+                        <li><h3>Mobile:</h3> <p><?php echo"$spData[umob]" ?></p></li> 
+                        <li><h3>Location:</h3> <p><?php echo"$spData[location]" ?></p></li>
                     </ul>
                     <div class="lsModelFormBottom">
-                        <a href="service-provider-account-setup.php" class="btn boxShadow1" type="submit" name="add_prof">Edit Profile</a>
-                        <a href="./logout.php" class="btn boxShadow1" >Logout</a>
-                    </div>
+                        <a href=""></a>
+                        <a href="user-account-setup.php" class="btn boxShadow1" type="submit" name="add_prof">Edit Profile</a>                    </div>
                 </div>
                 <div class="lsModalTermsDiv"></div>
             </div>

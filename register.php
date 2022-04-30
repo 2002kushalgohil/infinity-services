@@ -1,3 +1,37 @@
+<?php
+    include('conn.php');
+    if (isset($_POST['register'])) {
+      if (!empty($_POST['user']) && !empty($_POST['password']) && !empty($_POST['stype'])) {
+        $user = strtolower($_POST['user']);
+        $pass = $_POST['password'];
+        $stype = strtolower($_POST['stype']);
+        mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
+        $query = mysqli_query($conn, "SELECT * FROM login WHERE user_id='$user'");
+        $numrows = mysqli_num_rows($query);
+        if ($numrows == 0) {
+          $query = mysqli_query($conn, "INSERT INTO login(id,user_id,password,stype) VALUES ('','$user','$pass','$stype')");
+          if ($query) {
+            echo '<script>';
+            echo 'alert("User Registered Successfully")';
+            echo '</script>';
+            echo "<script>window.location.href='login.php'</script>";
+          } else {
+            echo '<script>';
+            echo 'alert("Registration Failed")';
+            echo '</script>';
+          }
+        } else {
+          echo '<script>';
+          echo 'alert("User Already Exits")';
+          echo '</script>';
+        }
+      } else {
+        echo '<script>';
+        echo ' alert("All fields are required")';
+        echo '</script>';
+      }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +65,7 @@
             </select>
             <div class="lsModelFormBottom">
               <a href="login.php">Already a Member ?</a>
-              <button class="btn boxShadow1" type="submit" name="register" value="register">register</button>
+              <button class="btn boxShadow1" type="submit" name="register" value="register">Register</button>
             </div>
           </form>
         </div>
@@ -49,37 +83,3 @@
 </body>
 
 </html>
-<?php
-include('conn.php');
-if (isset($_POST['register'])) {
-  if (!empty($_POST['user']) && !empty($_POST['password']) && !empty($_POST['stype'])) {
-    $user = strtolower($_POST['user']);
-    $pass = $_POST['password'];
-    $stype = strtolower($_POST['stype']);
-    mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
-    $query = mysqli_query($conn, "SELECT * FROM login WHERE user_id='$user'");
-    $numrows = mysqli_num_rows($query);
-    if ($numrows == 0) {
-      $query = mysqli_query($conn, "INSERT INTO login(id,user_id,password,stype) VALUES ('','$user','$pass','$stype')");
-      if ($query) {
-        echo '<script>';
-        echo 'alert("User Registered Successfully")';
-        echo '</script>';
-        echo "<script>window.location.href='login.php'</script>";
-      } else {
-        echo '<script>';
-        echo 'alert("Registration Failed")';
-        echo '</script>';
-      }
-    } else {
-      echo '<script>';
-      echo 'alert("User Already Exits")';
-      echo '</script>';
-    }
-  } else {
-    echo '<script>';
-    echo ' alert("All fields are required")';
-    echo '</script>';
-  }
-}
-?>
