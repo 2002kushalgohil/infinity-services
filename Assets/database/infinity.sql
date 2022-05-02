@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 30, 2022 at 12:32 PM
+-- Generation Time: May 02, 2022 at 02:51 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -21,26 +21,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `infinity` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `infinity`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `complaints`
---
-
-CREATE TABLE IF NOT EXISTS `complaints` (
-  `id` int(11) NOT NULL,
-  `uname` varchar(25) NOT NULL,
-  `service` varchar(25) NOT NULL,
-  `sname` varchar(25) NOT NULL,
-  `complaint` text NOT NULL,
-  `cdate` date NOT NULL,
-  `ctime` time NOT NULL,
-  KEY `service` (`service`),
-  KEY `uname` (`uname`),
-  KEY `sname` (`sname`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -85,18 +65,17 @@ INSERT INTO `login` (`id`, `user_id`, `password`, `stype`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `services` (
-  `sid` int(11) NOT NULL,
-  `service` varchar(50) NOT NULL,
-  `sname` varchar(50) NOT NULL,
-  `uname` varchar(50) NOT NULL,
-  `accept_status` varchar(25) NOT NULL,
-  `pay_status` varchar(25) NOT NULL,
+  `serv_id` int(11) NOT NULL,
+  `usr_id` int(11) NOT NULL,
+  `sp_id` int(11) NOT NULL,
+  `serv` varchar(50) NOT NULL,
+  `serv_status` varchar(50) NOT NULL,
   `ratings` int(11) NOT NULL,
+  `rdate` date NOT NULL,
+  `rtime` time NOT NULL,
   `adate` date NOT NULL,
   `atime` time NOT NULL,
-  KEY `fk_sname` (`sname`),
-  KEY `fk_service` (`service`),
-  KEY `fk_uname` (`uname`)
+  PRIMARY KEY (`serv_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -118,8 +97,8 @@ CREATE TABLE IF NOT EXISTS `sproviders` (
   `sdesc` text NOT NULL,
   UNIQUE KEY `smail` (`smail`),
   UNIQUE KEY `sname` (`sname`),
-  UNIQUE KEY `fk_service` (`serv`),
-  UNIQUE KEY `id` (`id`)
+  UNIQUE KEY `id` (`id`),
+  KEY `fk_service` (`serv`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -128,12 +107,15 @@ CREATE TABLE IF NOT EXISTS `sproviders` (
 
 INSERT INTO `sproviders` (`id`, `sname`, `smail`, `smob`, `serv`, `slocation`, `stime`, `etime`, `scharges`, `sdesc`) VALUES
 (143, 'abdul karim', 'abd360@yahoo.com', 9154654798, 'Mechanic ', 'shrirampur', '09:00:00', '21:00:00', 15, 'I am professional mechanic with expertise in heavy vehical auto works'),
+(140, 'abhinav bankar', 'abhi777@gmail.com', 9156788654, 'Mechanic ', 'pune', '09:00:00', '16:00:00', 350, 'An experienced car mechanic at BMW'),
 (146, 'aishwarya kapoor', 'aish784@gmail.com', 7850431254, 'Makeup artist', 'mumbai', '10:00:00', '15:00:00', 150, 'an professional makeup artist'),
 (141, 'dev varma', 'dev@gmail.com', 9158848876, 'Pet sitting', 'shrirampur', '09:00:00', '17:00:00', 60, 'an animal lover and pet sitter'),
+(145, 'karishma patil', 'kpatil@yahoo.com', 9531476454, 'Makeup artist', 'baramati', '11:00:00', '16:00:00', 150, 'a professional makeup artist and ex-makeup artist of rk studios'),
 (147, 'krishna chakraborthy', 'krish267@gmail.com', 9164578542, 'Electrician', 'shrirampur', '08:00:00', '20:00:00', 45, 'An IIT graduate professional in electricals with experience of 3 years'),
 (149, 'pinky m malhotra', 'pinky@gmail.com', 7040023999, 'Doctor', 'pune', '09:00:00', '19:00:00', 40, 'an M.D. in orthopedics from british university london'),
 (138, 'varun anand', 'raj343@gmail.com', 9552726547, 'Advocate', 'shrirampur', '09:00:00', '13:30:00', 340, 'an experienced advocate in prominent of civil cases'),
-(142, 'rocky singhania', 'rocks@rohit.com', 9646751414, 'Fitness trainer', 'mumbai', '07:00:00', '09:30:00', 25, 'an owner and trainer of fast & furious gym ');
+(142, 'rocky singhania', 'rocks@rohit.com', 9646751414, 'Fitness trainer', 'mumbai', '07:00:00', '09:30:00', 25, 'an owner and trainer of fast & furious gym '),
+(148, 'vikram bajaj', 'vbajaj12@gmail.com', 9154778985, 'Advocate', 'nagpur', '10:00:00', '14:00:00', 450, 'civil lawyer as a consultant to MNCs');
 
 -- --------------------------------------------------------
 
@@ -165,23 +147,6 @@ INSERT INTO `users` (`id`, `uname`, `umail`, `umob`, `location`) VALUES
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `complaints`
---
-ALTER TABLE `complaints`
-  ADD CONSTRAINT `fk_serve` FOREIGN KEY (`service`) REFERENCES `sproviders` (`serv`),
-  ADD CONSTRAINT `fk_sname` FOREIGN KEY (`sname`) REFERENCES `sproviders` (`sname`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_uid` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_uname` FOREIGN KEY (`uname`) REFERENCES `users` (`uname`) ON DELETE CASCADE;
-
---
--- Constraints for table `services`
---
-ALTER TABLE `services`
-  ADD CONSTRAINT `fk_service` FOREIGN KEY (`service`) REFERENCES `sproviders` (`serv`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_sname2` FOREIGN KEY (`sname`) REFERENCES `sproviders` (`sname`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_uname2` FOREIGN KEY (`uname`) REFERENCES `users` (`uname`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `sproviders`

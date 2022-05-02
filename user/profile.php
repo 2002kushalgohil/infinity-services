@@ -7,6 +7,7 @@
      session_start();
      $userName = $_SESSION['sess_user'];
 
+
     //------------------------- if not authenticated redirect to login page --------------------
     if(!isset($_SESSION['sess_user'])){
         header("Location: login.php");
@@ -16,8 +17,10 @@
      mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
      $userId = mysqli_query($conn, "SELECT id FROM Login WHERE user_id= '$userName'");
      $id2=mysqli_fetch_assoc($userId);
+     
      $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM users WHERE id= '$id2[id]'");
      $spData = mysqli_fetch_array($unFIlteredSPData);
+     
  
      // if $spData is empty the make it as an empty array
      if(!$spData){

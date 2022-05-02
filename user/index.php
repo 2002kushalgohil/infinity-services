@@ -15,7 +15,7 @@
      mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
      $userId = mysqli_query($conn, "SELECT id FROM Login WHERE user_id= '$userName'");
      $id2=mysqli_fetch_assoc($userId);
-     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM sproviders");
+     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM sproviders WHERE serv_status='$serv_status'");
      $spDataRows = mysqli_num_rows($unFIlteredSPData);
      
 ?>
@@ -84,7 +84,7 @@
                 <div class="userDashBoardCardOverlay">
                     <div class="userDashBoardCardOverlaySub1">
                         <div class="userDashBoardCardOverlaySub1ButtonDiv">
-                            <button class="btn">Book my Service</button>
+                            <button class="btn" ><a href="./book_serv.php?id=<?php echo $allServices['id']?> ">Book my Service</a> </button>
                             <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
                         </div>
                         <p class="userDashboardDescription"><?php echo"$allServices[sdesc]"?></p>

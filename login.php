@@ -64,6 +64,7 @@ if (isset($_POST['login'])) {
             if ($db_pswd == $pswd && $db_user == $usr) {
                 session_start();
                 $_SESSION['sess_user'] = $usr;
+                
                switch($db_stype){
                    case'user':header("location:user/profile.php");
                    break;
