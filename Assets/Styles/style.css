@@ -89,7 +89,7 @@ html {
   scroll-behavior: smooth;
 }
 
-#mainSectionSmall{
+#mainSectionSmall {
   height: 90vh;
 }
 
@@ -176,8 +176,8 @@ html {
   border-color: var(--blue-Color);
 }
 
-.inputBxHalf{
-  width: 49%!important;
+.inputBxHalf {
+  width: 49% !important;
 }
 
 /* --------------------------------- Navbar ---------------------------------*/
@@ -286,9 +286,14 @@ nav ul li {
 .userDashBoardCardMainDiv {
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: start;
+  /* flex-wrap: wrap; */
+  overflow: scroll;
   margin-top: var(--mp-Main);
+}
+
+.userDashBoardCardMainDiv::-webkit-scrollbar {
+  display: none;
 }
 
 .userDashBoardCard {
@@ -300,6 +305,7 @@ nav ul li {
   overflow: hidden;
   margin: var(--mp-Main);
   position: relative;
+  flex-shrink: 0;
 }
 
 .userDashBoardCard:hover {
@@ -311,7 +317,6 @@ nav ul li {
 .userDashBoardCard:hover .userDashboardDescription {
   -webkit-line-clamp: 5;
 }
-
 
 .userDashBoardCardOverlay {
   display: flex;
@@ -462,7 +467,7 @@ nav ul li {
   background-color: #fff;
 }
 
-.lsModalSec2YelloBg{
+.lsModalSec2YelloBg {
   background-color: #fff0d9;
 }
 
@@ -555,7 +560,7 @@ nav ul li {
   margin-top: var(--mp-Main);
 }
 
-.lsModelForm ul li h3{
+.lsModelForm ul li h3 {
   margin-right: var(--mp-Secondary);
 }
 
@@ -803,4 +808,3 @@ nav ul li {
     flex: 0;
   }
 }
-

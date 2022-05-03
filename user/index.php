@@ -5,13 +5,16 @@
      //  ----------------- Session start --------------------
      session_start();
      $userId = $_SESSION['sess_id'];
-    $sType = $_SESSION['sess_stype'];
+     $sType = $_SESSION['sess_stype'];
+
+     $sp_id = "";
+     $serv = "";
+     $sname = "";
      
      //------------------------- if not authenticated redirect to login page --------------------
     if(!isset($_SESSION['sess_id'])){
         echo "<script>window.location.href = '../login.php';</script>";
-    }
-     
+    } 
     
     // -------------------- specific user can access only his profile --------------------
     if($sType != 'user'){
@@ -22,7 +25,37 @@
      mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
      $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM sproviders  ");
      $spDataRows = mysqli_num_rows($unFIlteredSPData);
-     
+
+    //  ------------- Get Book Id from book_Id_Get click -------------------------
+    if(isset($_POST['book_Id_Get'])){
+        $sp_id = $_POST['sp_id'];
+        $serv = $_POST['serv'];
+        $sname = $_POST['sname'];
+
+        $_SESSION['sess_sp_id'] = $sp_id ;
+        $_SESSION['sess_serv'] = $serv;
+        $_SESSION['sname'] = $sname;
+        
+    }
+    
+    //  ----------------- Book a service  on button click --------------------------
+    if(isset($_POST['book_a_service'])){
+        $sess_sp_id = $_SESSION['sess_sp_id'];
+        $sess_serv = $_SESSION['sess_serv'];
+        $sname = $_SESSION['sname'];
+        $rtime = $_POST['rtime'];
+        $rdate = $_POST['rdate'];
+        $sql = "INSERT INTO services ( usr_id, sp_id, sname,serv, serv_status, rtime, rdate) VALUES ( '$userId', '$sess_sp_id','$sname', '$sess_serv', 'requested', '$rtime', '$rdate')";
+        if(mysqli_query($conn, $sql)){
+            echo "<script>alert('Service Booked')</script>";
+        }
+        else{
+            echo "<script>alert('Something Went Wrong')</script>";
+        }
+            unset($_SESSION['sess_sp_id']);
+            unset($_SESSION['sess_serv']);
+            unset($_SESSION['sname']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +66,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../Assets/Styles/style.css?v=<?php echo time(); ?>">
     <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <link rel="icon" type="image/png" sizes="32x32" href="../Assets/Favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../Assets/Favicons/favicon-16x16.png">
     <title>Infinity Services</title>
@@ -88,10 +124,13 @@
             <div class="userDashBoardCard boxShadow1Hover">
                 <div class="userDashBoardCardOverlay">
                     <div class="userDashBoardCardOverlaySub1">
-                        <div class="userDashBoardCardOverlaySub1ButtonDiv">
-                            <button class="btn">Book my Service</button>
+                        <form class="userDashBoardCardOverlaySub1ButtonDiv" method="POST" action="">
+                            <input type="hidden" name="sp_id" value="<?php echo"$allServices[id]"?>">
+                            <input type="hidden" name="serv" value="<?php echo"$allServices[serv]"?>">
+                            <input type="hidden" name="sname" value="<?php echo"$allServices[sname]"?>">
+                            <button type="submit"  name="book_Id_Get" class="btn bookMySerId">Book my Service</button>
                             <p class="userDashboardCardStarMainP">5 <img src="../Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
-                        </div>
+                        </form>
                         <p class="userDashboardDescription"><?php echo"$allServices[sdesc]"?></p>
                     </div>
                     <div class="userDashBoardCardOverlaySub2">
@@ -109,6 +148,13 @@
             }
         ?>
         </div>
+        <?php if ($sp_id) { ?>
+            <form id="indexModal" action="" method="POST" style="width:250px;margin:100px;">
+                <input class="inputBx boxShadow1Hover" type="date" name="rdate">
+                <input class="inputBx boxShadow1Hover" type="time" name="rtime">
+                <button type="submit" name="book_a_service">Submit</button>
+            </form>
+        <?php } ?>
     </section>
 
     <script src="../Assets/Scripts/script.js"></script>
