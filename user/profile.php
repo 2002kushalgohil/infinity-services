@@ -5,26 +5,29 @@
 
      //  ----------------- Session start --------------------
      session_start();
-     $userName = $_SESSION['sess_user'];
+     $userId = $_SESSION['sess_id'];
+    $sType = $_SESSION['sess_stype'];
 
 
     //------------------------- if not authenticated redirect to login page --------------------
-    if(!isset($_SESSION['sess_user'])){
-        header("Location: login.php");
+    if(!isset($_SESSION['sess_id'])){
+        echo "<script>window.location.href = '../login.php';</script>";
+    }
+
+    // -------------------- specific user can access only his profile --------------------
+    if($sType != 'user'){
+        echo "<script>window.location.href = '../service-provider/profile.php';</script>";
     }
      
      // -------------------- Fetch user Id from dtabase --------------------
      mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
-     $userId = mysqli_query($conn, "SELECT id FROM Login WHERE user_id= '$userName'");
-     $id2=mysqli_fetch_assoc($userId);
-     
-     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM users WHERE id= '$id2[id]'");
+     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM users WHERE id= '$userId'");
      $spData = mysqli_fetch_array($unFIlteredSPData);
      
  
      // if $spData is empty the make it as an empty array
      if(!$spData){
-        header("Location: account-setup.php");
+        header("account-setup.php");
          $spData['uname'] = "";
          $spData['umail'] = "";
          $spData['umob'] = "";
@@ -59,7 +62,7 @@
                     <p>Infinity Services</p>
             </div>
                 <div class="lsModelForm">
-                    <h2>Welcome <?php echo"$spData[uname]" ?></h2>
+                    <p>Welcome <h2><?php echo"$spData[uname]" ?></h2></p>
                     <ul>
                         <li><h3>Name:</h3> <p><?php echo"$spData[uname]" ?></p></li>
                         <li><h3>Email:</h3> <p><?php echo"$spData[umail]" ?></p> </li>

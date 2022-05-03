@@ -60,10 +60,14 @@ if (isset($_POST['login'])) {
                 $db_user = $row['user_id'];
                 $db_pswd = $row['password'];
                 $db_stype = $row['stype'];
+                $id = $row['id'];
             }
             if ($db_pswd == $pswd && $db_user == $usr) {
                 session_start();
-                $_SESSION['sess_user'] = $usr;
+                
+                // ---------------- Starting session for Id and Role ----------------
+                $_SESSION['sess_id'] = $id;
+                $_SESSION['sess_stype'] = $db_stype;
                 
                switch($db_stype){
                    case'user':header("location:user/profile.php");

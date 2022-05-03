@@ -4,18 +4,21 @@
 
     //  ----------------- Session start --------------------
     session_start();
-    $userName = $_SESSION['sess_user'];
-
+    $userId = $_SESSION['sess_id'];
+    $sType = $_SESSION['sess_stype'];
     //------------------------- if not authenticated redirect to login page --------------------
-    if(!isset($_SESSION['sess_user'])){
-        header("Location: login.php");
+    if(!isset($_SESSION['sess_id'])){
+        echo "<script>window.location.href = '../login.php';</script>";
+    }
+
+    // -------------------- specific user can access only his profile --------------------
+    if($sType != 'user'){
+        echo "<script>window.location.href = '../service-provider/profile.php';</script>";
     }
     
     // -------------------- Fetch user Id from dtabase --------------------
     mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
-    $userId = mysqli_query($conn, "SELECT id FROM Login WHERE user_id= '$userName'");
-    $id2=mysqli_fetch_assoc($userId);
-    $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM users WHERE id= '$id2[id]'");
+    $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM users WHERE id= '$userId'");
     $spData = mysqli_fetch_array($unFIlteredSPData);
     $btnText = "Update";
     $headingText = "Update Your Profile";
