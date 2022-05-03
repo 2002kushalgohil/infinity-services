@@ -21,7 +21,7 @@
     $headingText = "Update Your Profile";
     $newLoginRedirect = "I will do it later !";
     
-    $servicesArray = array("Advocate","Mechanic ","Electrician","Doctor","Fitness trainer","Makeup artist","Pet sitting");
+    $servicesArray = array("Advocate","Mechanic","Electrician","Doctor","Fitness trainer","Makeup artist","Pet sitting");
 
     if(!$spData){
         $spData['sname'] = "";

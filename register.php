@@ -22,7 +22,7 @@
           }
         } else {
           echo '<script>';
-          echo 'alert("User Already Exits")';
+          echo 'alert("Username already Taken")';
           echo '</script>';
         }
       } else {
