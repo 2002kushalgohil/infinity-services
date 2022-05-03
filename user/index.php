@@ -84,7 +84,7 @@
                 <div class="userDashBoardCardOverlay">
                     <div class="userDashBoardCardOverlaySub1">
                         <div class="userDashBoardCardOverlaySub1ButtonDiv">
-                            <button class="btn" ><a href="./book_serv.php?id=<?php echo $allServices['id']?> ">Book my Service</a> </button>
+                            <button class="btn" >Book my Service</button>
                             <p class="userDashboardCardStarMainP">5 <img src="./Assets/Images/star.png" class="userDashboardCardStar" alt=""></p>
                         </div>
                         <p class="userDashboardDescription"><?php echo"$allServices[sdesc]"?></p>
