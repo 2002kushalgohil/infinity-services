@@ -309,9 +309,8 @@ nav ul li {
 }
 
 .userDashBoardCard:hover {
-  transform: scale(1.15);
   z-index: 20;
-  height: 300px;
+  height: 350px;
 }
 
 .userDashBoardCard:hover .userDashboardDescription {
@@ -413,13 +412,121 @@ nav ul li {
   background-repeat: no-repeat;
 }
 
-@media (max-width: 500px) {
-  .userDashBoardCard {
-    margin: var(--mp-Main) 0px;
-  }
-  .userDashBoardCard:hover {
-    transform: scale(1.05);
-  }
+.userDashboardBookingTimeDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userDashboardBookingTimeDiv form {
+  background-color: #fff;
+  padding: var(--mp-Large);
+  border-radius: var(--mp-Secondary);
+}
+
+.userDashboardBookingTimeDiv form p {
+  margin-bottom: var(--mp-Secondary);
+}
+
+.userDashboardBookingTimeDiv form input {
+  margin-bottom: var(--mp-Secondary);
+}
+
+.userDashboardBookingTimeDiv form:first-child {
+  margin-top: 0px;
+}
+
+.userBookingsMainDiv {
+  width: 100%;
+  margin-top: var(--mp-Large);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: var(--mp-Main);
+}
+
+.userBookingCard {
+  padding: var(--mp-Main);
+  border-radius: var(--mp-Secondary);
+  border: 1px solid var(--border-Color);
+  background-color: var(--primary-Color-Light);
+  gap: var(--mp-Secondary);
+  cursor: pointer;
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  min-height: 150px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userBookingCardDiv1,
+.userBookingCardDiv2,
+.userBookingCardDiv3 {
+  width: 100%;
+}
+
+.userBookingCardDiv1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.userBookingCardDiv2 {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-wrap: wrap;
+  gap: var(--mp-Main);
+}
+
+.userBookingCardDiv3 {
+  margin-top: var(--mp-Main);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.userBookingCardDiv3 p,
+.userBookingCardDiv3 select {
+  margin-bottom: var(--mp-Secondary);
+}
+
+.status {
+  align-self: flex-end;
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: var(--mp-Tertiary);
+}
+
+.Requested {
+  background-color: #ffeb3b;
+}
+
+.Accepted {
+  background-color: #4caf50;
+  color:var(--primary-Color-Light);
+}
+
+.Finished {
+  background-color: #2196f3;
+  color:var(--primary-Color-Light);
+}
+
+.Paid{
+  background-color: #4caf50;
+  color:var(--primary-Color-Light);
 }
 
 /* --------------------------------- Login and Signup ---------------------------------*/

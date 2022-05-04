@@ -121,6 +121,7 @@
                                     }
                                 }
                             ?>
+                        </select>
                         <input class="inputBx boxShadow1Hover" placeholder="Location" type="text" name="loc" value="<?php echo"$spData[slocation]" ?>">
                         <input class="inputBx inputBxHalf boxShadow1Hover" type="time" name="ftime" value="<?php echo"$spData[stime]" ?>">
                         <input class="inputBx inputBxHalf boxShadow1Hover" type="time" name="ttime" value="<?php echo"$spData[etime]" ?>">

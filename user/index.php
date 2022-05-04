@@ -45,16 +45,21 @@
         $sname = $_SESSION['sname'];
         $rtime = $_POST['rtime'];
         $rdate = $_POST['rdate'];
-        $sql = "INSERT INTO services ( usr_id, sp_id, sname,serv, serv_status, rtime, rdate) VALUES ( '$userId', '$sess_sp_id','$sname', '$sess_serv', 'requested', '$rtime', '$rdate')";
-        if(mysqli_query($conn, $sql)){
-            echo "<script>alert('Service Booked')</script>";
+        if(empty($rtime) || empty($rdate)){
+            echo "<script>alert('Please fill all the fields')</script>";
+        }else{
+                $sql = "INSERT INTO services ( usr_id, sp_id, sname,serv, serv_status, rtime, rdate) VALUES ( '$userId', '$sess_sp_id','$sname', '$sess_serv', 'Requested', '$rtime', '$rdate')";
+            if(mysqli_query($conn, $sql)){
+                echo "<script>alert('Service Booked')</script>";
+                echo "<script>window.location.href = './bookings.php';</script>";
+            }
+            else{
+                echo "<script>alert('Something Went Wrong')</script>";
+            }
         }
-        else{
-            echo "<script>alert('Something Went Wrong')</script>";
-        }
-            unset($_SESSION['sess_sp_id']);
-            unset($_SESSION['sess_serv']);
-            unset($_SESSION['sname']);
+        unset($_SESSION['sess_sp_id']);
+        unset($_SESSION['sess_serv']);
+        unset($_SESSION['sname']);
     }
 ?>
 <!DOCTYPE html>
@@ -79,6 +84,7 @@
         <a href="#home"><img src="../Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
             <li><a href='./profile.php'>Profile</a></li>
+            <li><a href='./bookings.php'>Bookings</a></li>
             <li><a href='../logout.php'>Logout</a></li>
         </ul>
     </nav>
@@ -149,11 +155,15 @@
         ?>
         </div>
         <?php if ($sp_id) { ?>
-            <form id="indexModal" action="" method="POST" style="width:250px;margin:100px;">
-                <input class="inputBx boxShadow1Hover" type="date" name="rdate">
-                <input class="inputBx boxShadow1Hover" type="time" name="rtime">
-                <button type="submit" name="book_a_service">Submit</button>
-            </form>
+            <div class="userDashboardBookingTimeDiv glass">
+                <form action="" method="POST" style="width:250px;margin:100px;">
+                    <p>Booking Date</p>
+                    <input class="inputBx boxShadow1Hover" type="date" name="rdate">
+                    <p>Booking Time</p>
+                    <input class="inputBx boxShadow1Hover" type="time" name="rtime">
+                    <button type="submit" class="btn" name="book_a_service">Submit</button>
+                </form>
+            </div>
         <?php } ?>
     </section>
 
