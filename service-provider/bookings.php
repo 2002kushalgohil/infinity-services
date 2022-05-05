@@ -104,7 +104,7 @@
             if($spDataRows!=0){
                 while($allServices = mysqli_fetch_assoc($unFIlteredSPData)){            
             ?>
-            <div class="userBookingCard boxShadow1Hover">    
+            <div class="userBookingCard boxShadow1Hover <?php echo"$allServices[serv_status]"?>">    
                 <?php if ("$allServices[ratings]" > 0) { ?>
                     <p class="userBookingRating">You got <?php echo"$allServices[ratings]"?> <img src="../Assets/Images/star.png" class="userBookingRatingImg" alt=""> Rating</p>
                 <?php } ?>

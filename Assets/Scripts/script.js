@@ -1,6 +1,9 @@
 const userDashBoardSearchBx = document.getElementById("userDashBoardSearchBx");
 const userSearchChkBx = document.getElementById("userSearchChkBx");
+const toastMessage = document.getElementById("toastMessage");
 
-userDashBoardSearchBx.addEventListener("click", () => {
-  userSearchChkBx.checked = !userSearchChkBx.checked;
-});
+if (userDashBoardSearchBx != null) {
+  userDashBoardSearchBx.addEventListener("click", () => {
+    userSearchChkBx.checked = !userSearchChkBx.checked;
+  });
+}

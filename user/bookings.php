@@ -96,7 +96,7 @@
             if($spDataRows!=0){
                 while($allServices = mysqli_fetch_assoc($unFIlteredSPData)){            
             ?>
-            <div class="userBookingCard boxShadow1Hover">    
+            <div class="userBookingCard boxShadow1Hover <?php echo"$allServices[serv_status]"?>">    
                 <div class="userBookingCardDiv1">
                     <p class="status <?php echo"$allServices[serv_status]"?>"><?php echo"$allServices[serv_status]"?></p>
                     <h2><?php echo"$allServices[sname]"?></h2>
@@ -128,6 +128,7 @@
                         <select name="serv_status" class="inputBx inputBxHalf">
                             <option value="">Select</option>
                             <option value="Accepted">Accept</option>
+                            <option value="Rejected">Rejected</option>
                         </select>
                         <button type="submit" name="update_status" class="btn">Update</button>
                     </form>   
@@ -142,9 +143,9 @@
                             <option value="">Select</option>
                             <option value="1">1 Star</option>
                             <option value="2">2 Star</option>
-                            <option value="5">5 Star</option>
                             <option value="3">3 Star</option>
                             <option value="4">4 Star</option>
+                            <option value="5">5 Star</option>
                         </select>
                         <button type="submit" name="update_rating" class="btn">Rate</button>
                     </form>   

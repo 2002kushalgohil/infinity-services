@@ -82,12 +82,12 @@ if (isset($_POST['login'])) {
                }
             } else {
                 echo '<script>';
-                echo 'alert("Invalid username or password")';
+                echo 'alert("Invalid Creditentials")';
                 echo '</script>';
             }
         } else {
             echo '<script>';
-            echo 'alert(" User Not Found")';
+            echo 'alert("Please Signup First")';
             echo '</script>';
         }
     } else {

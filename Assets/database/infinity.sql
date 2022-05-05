@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2022 at 11:08 AM
+-- Generation Time: May 05, 2022 at 04:19 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -84,7 +84,12 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`serv_id`, `usr_id`, `sp_id`, `sname`, `serv`, `uname`, `location`, `serv_status`, `ratings`, `rdate`, `rtime`) VALUES
-(122, 144, 143, 'abdul karim', 'Mechanic', 'john yacruise', 'pune', 'Requested', 0, '2022-05-12', '14:29:00');
+(124, 144, 143, 'abdul karim', 'Mechanic', 'john yacruise', 'pune', 'Paid', 3, '2022-05-05', '00:00:00'),
+(125, 150, 140, 'abhinav bankar', 'Mechanic', 'anamika khanna', 'pune', 'Paid', 2, '2022-05-12', '18:14:00'),
+(126, 151, 141, 'dev varma', 'Pet sitting', 'gopal dhamaal', 'mumbai', 'UnPaid', 0, '2022-05-05', '18:46:00'),
+(127, 151, 138, 'varun anand', 'Advocate', 'gopal dhamaal', 'mumbai', 'Requested', 0, '2022-05-05', '20:47:00'),
+(128, 154, 148, 'vikram bajaj', 'Advocate', 'Rudisn', 'Shr', 'Requested', 0, '2022-05-05', '18:46:00'),
+(129, 151, 145, 'karishma patil', 'Makeup artist', 'gopal dhamaal', 'mumbai', 'Requested', 0, '2022-05-20', '22:26:00');
 
 -- --------------------------------------------------------
 
@@ -110,18 +115,18 @@ CREATE TABLE `sproviders` (
 --
 
 INSERT INTO `sproviders` (`id`, `sname`, `smail`, `smob`, `serv`, `slocation`, `stime`, `etime`, `scharges`, `sdesc`) VALUES
-(156, 'ss', 'a@a.com', 8888888888, 'Doctor', 'sd', '09:18:00', '09:17:00', 999, 'dsdsd'),
-(143, 'abdul karim', 'abd360@yahoo.com', 9154654798, 'Mechanic', 'shrirampur', '09:00:00', '21:00:00', 15, 'I am professional mechanic with expertise in heavy vehical auto works'),
-(140, 'abhinav bankar', 'abhi777@gmail.com', 9156788654, 'Mechanic', 'pune', '09:00:00', '16:00:00', 350, 'An experienced car mechanic at BMW'),
-(146, 'aishwarya kapoor', 'aish784@gmail.com', 7850431254, 'Makeup artist', 'mumbai', '10:00:00', '15:00:00', 150, 'an professional makeup artist'),
-(158, 'Demo name', 'd@d.com', 8888888888, 'Fitness trainer', 'pune', '14:41:00', '14:41:00', 55, 'hjasdjhadsjygasdjygasdjygdjgyasfddfja'),
-(141, 'dev varma', 'dev@gmail.com', 9158848876, 'Pet sitting', 'shrirampur', '09:00:00', '17:00:00', 60, 'an animal lover and pet sitter'),
-(145, 'karishma patil', 'kpatil@yahoo.com', 9531476454, 'Makeup artist', 'baramati', '11:00:00', '16:00:00', 150, 'a professional makeup artist and ex-makeup artist of rk studios'),
-(147, 'krishna chakraborthy', 'krish267@gmail.com', 9164578542, 'Electrician', 'shrirampur', '08:00:00', '20:00:00', 45, 'An IIT graduate professional in electricals with experience of 3 years'),
-(149, 'pinky m malhotra', 'pinky@gmail.com', 7040023999, 'Doctor', 'pune', '09:00:00', '19:00:00', 40, 'an M.D. in orthopedics from british university london'),
-(138, 'varun anand', 'raj343@gmail.com', 9552726547, 'Advocate', 'shrirampur', '09:00:00', '13:30:00', 340, 'an experienced advocate in prominent of civil cases'),
-(142, 'rocky singhania', 'rocks@rohit.com', 9646751414, 'Fitness trainer', 'mumbai', '07:00:00', '09:30:00', 25, 'an owner and trainer of fast & furious gym '),
-(148, 'vikram bajaj', 'vbajaj12@gmail.com', 9154778985, 'Advocate', 'nagpur', '10:00:00', '14:00:00', 450, 'civil lawyer as a consultant to MNCs');
+(156, 'ss', 'a@a.com', 8888888888, 'Doctor', 'Delhi', '09:18:00', '09:17:00', 999, 'dsdsd'),
+(143, 'Abdul karim', 'abd360@yahoo.com', 9154654798, 'Mechanic', 'Shrirampur', '09:00:00', '21:00:00', 15, 'I am professional mechanic with expertise in heavy vehical auto works'),
+(140, 'Abhinav bankar', 'abhi777@gmail.com', 9156788654, 'Mechanic', 'Pune', '09:00:00', '16:00:00', 350, 'An experienced car mechanic at BMW'),
+(146, 'Aishwarya kapoor', 'aish784@gmail.com', 7850431254, 'Makeup artist', 'Mumbai', '10:00:00', '15:00:00', 150, 'an professional makeup artist'),
+(158, 'Demo name', 'd@d.com', 8888888888, 'Fitness trainer', 'Pune', '14:41:00', '14:41:00', 55, 'hjasdjhadsjygasdjygasdjygdjgyasfddfja'),
+(141, 'Dev varma', 'dev@gmail.com', 9158848876, 'Pet sitting', 'Shrirampur', '09:00:00', '17:00:00', 60, 'an animal lover and pet sitter'),
+(145, 'Karishma patil', 'kpatil@yahoo.com', 9531476454, 'Makeup artist', 'Baramati', '11:00:00', '16:00:00', 150, 'a professional makeup artist and ex-makeup artist of rk studios'),
+(147, 'Krishna chakraborthy', 'krish267@gmail.com', 9164578542, 'Electrician', 'Shrirampur', '08:00:00', '20:00:00', 45, 'An IIT graduate professional in electricals with experience of 3 years'),
+(149, 'Pinky m malhotra', 'pinky@gmail.com', 7040023999, 'Doctor', 'Pune', '09:00:00', '19:00:00', 40, 'an M.D. in orthopedics from british university london'),
+(138, 'Varun anand', 'raj343@gmail.com', 9552726547, 'Advocate', 'Shrirampur', '09:00:00', '13:30:00', 340, 'an experienced advocate in prominent of civil cases'),
+(142, 'Rocky singhania', 'rocks@rohit.com', 9646751414, 'Fitness trainer', 'Mumbai', '07:00:00', '09:30:00', 25, 'an owner and trainer of fast & furious gym '),
+(148, 'Vikram bajaj', 'vbajaj12@gmail.com', 9154778985, 'Advocate', 'Nagpur', '10:00:00', '14:00:00', 450, 'civil lawyer as a consultant to MNCs');
 
 -- --------------------------------------------------------
 
@@ -142,12 +147,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `uname`, `umail`, `umob`, `location`) VALUES
-(150, 'anamika khanna', 'anu@anu.com', 9145247264, 'pune'),
-(151, 'gopal dhamaal', 'gopueda@rohit.com', 7464199541, 'mumbai'),
-(144, 'john yacruise', 'johny24@hotmail.com', 9169368420, 'pune'),
-(152, 'madhav dhamaal', 'madhu@rohit.com', 9856318979, 'mumbai'),
-(139, 'raj malhotra', 'raj123@gmail.com', 9152014365, 'shrirampur'),
-(154, 'Rudisn', 'k@k.com', 8888888888, 'Shr');
+(150, 'Anamika khanna', 'anu@anu.com', 9145247264, 'Pune'),
+(151, 'Gopal dhamaal', 'gopueda@rohit.com', 7464199541, 'Mumbai'),
+(144, 'John yacruise', 'johny24@hotmail.com', 9169368420, 'Pune'),
+(152, 'Madhav dhamaal', 'madhu@rohit.com', 9856318979, 'Mumbai'),
+(139, 'Raj malhotra', 'raj123@gmail.com', 9152014365, 'Shrirampur'),
+(154, 'Rudisn', 'k@k.com', 8888888888, 'Shrirampur');
 
 --
 -- Indexes for dumped tables
@@ -196,7 +201,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `serv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `serv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- Constraints for dumped tables

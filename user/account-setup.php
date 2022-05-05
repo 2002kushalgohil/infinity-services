@@ -41,7 +41,7 @@
         $uname = ucfirst($_POST['uname']);
         $uemail = $_POST['umail'];
         $umobno = $_POST['umob'];
-        $location = $_POST['location'];
+        $location = ucfirst($_POST['location']);
         if(empty($uname) || empty($uemail) || empty($umobno) || empty($location)){
             echo "<script>alert('Please fill all the fields')</script>";
         }

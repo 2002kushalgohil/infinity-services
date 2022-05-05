@@ -48,7 +48,7 @@
         $smail = $_POST['smail'];
         $mobno = $_POST['mobno'];
         $serv = $_POST['serv'];
-        $loc = $_POST['loc'];
+        $loc = ucfirst($_POST['loc']);
         $ftime = $_POST['ftime'];
         $ttime = $_POST['ttime'];
         $rate = $_POST['rate'];
