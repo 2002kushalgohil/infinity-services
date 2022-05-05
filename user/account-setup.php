@@ -56,7 +56,7 @@
                 }
             }
             else{
-                $sql = "UPDATE users SET uname='$uname', umail='$uemail', umob='$umobno', location='$location' WHERE id='$id2[id]'";
+                $sql = "UPDATE users SET uname='$uname', umail='$uemail', umob='$umobno', location='$location' WHERE id='$userId'";
                 if(mysqli_query($conn, $sql)){
                     echo "<script>window.location.href='profile.php'</script>";
                 }
