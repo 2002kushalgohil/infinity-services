@@ -110,8 +110,8 @@
                 <?php } ?>
                 <div class="userBookingCardDiv1">
                     <p class="status <?php echo"$allServices[serv_status]"?>"><?php echo"$allServices[serv_status]"?></p>
-                    <h2>User Name</h2>
-                    <p>User Address</p>
+                    <h2><?php echo"$allServices[uname]"?></h2>
+                    <p><?php echo"$allServices[location]"?></p>
                 </div>    
                 <div class="userBookingCardDiv2">
                     <p><?php echo"$allServices[rdate]"?></p>

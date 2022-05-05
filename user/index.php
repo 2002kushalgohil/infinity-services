@@ -59,7 +59,7 @@
         if(empty($rtime) || empty($rdate)){
             echo "<script>alert('Please fill all the fields')</script>";
         }else{
-                $sql = "INSERT INTO services ( usr_id, sp_id, sname,serv, serv_status, rtime, rdate) VALUES ( '$userId', '$sess_sp_id','$sname', '$sess_serv', 'Requested', '$rtime', '$rdate')";
+                $sql = "INSERT INTO services ( usr_id, sp_id, sname,serv,uname,location,serv_status, rtime, rdate) VALUES ( '$userId', '$sess_sp_id','$sname', '$sess_serv', '$userData[uname]','$userData[location]','Requested', '$rtime', '$rdate')";
             if(mysqli_query($conn, $sql)){
                 echo "<script>alert('Service Booked')</script>";
                 echo "<script>window.location.href = './bookings.php';</script>";

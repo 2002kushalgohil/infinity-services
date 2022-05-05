@@ -44,7 +44,7 @@
 
     // ------------------ Sending Data to server as per condition --------------------
     if(isset($_POST['add_prof'])){
-        $sname = $_POST['sname'];
+        $sname = ucfirst($_POST['sname']);
         $smail = $_POST['smail'];
         $mobno = $_POST['mobno'];
         $serv = $_POST['serv'];
