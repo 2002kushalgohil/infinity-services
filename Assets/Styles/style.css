@@ -186,13 +186,11 @@ nav {
   height: 65px;
   padding: var(--mp-Main) var(--mp-Large);
   border-bottom: 1px solid var(--border-Color);
-  /* position: fixed; */
-  /* top: 0; */
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.386);
+  background-color: var(--primary-Color-Light);
   z-index: 100;
 }
 
@@ -520,7 +518,7 @@ nav ul li {
   margin-bottom: var(--mp-Main);
 }
 
-.userBookingRatingImg{
+.userBookingRatingImg {
   width: 25px;
   margin-left: 3px;
   margin-right: 3px;
@@ -528,34 +526,41 @@ nav ul li {
 
 .Requested {
   background-color: #ffeb3b;
+  opacity: 0.6;
 }
 
 .Accepted {
   background-color: #4caf50;
   color: var(--primary-Color-Light);
+  opacity: 0.6;
 }
 
 .Finished {
   background-color: #2196f3;
   color: var(--primary-Color-Light);
+  opacity: 0.6;
 }
 
 .Paid {
   background-color: #4caf50;
   color: var(--primary-Color-Light);
+  opacity: 0.6;
 }
 
 .Rejected {
   background-color: #f44336;
   color: var(--primary-Color-Light);
+  opacity: 0.6;
 }
 
 .UnPaid {
   background-color: #ffeb3b;
+  opacity: 0.6;
 }
 
-.ChangedTime{
+.ChangedTime {
   background-color: #ffeb3b;
+  opacity: 0.6;
 }
 
 /* --------------------------------- Login and Signup ---------------------------------*/
@@ -943,4 +948,66 @@ nav ul li {
   .LPServicesSubDiv2 {
     flex: 0;
   }
+}
+
+/* --------------------------------- Admin Section ---------------------------------*/
+
+.adminTableMainDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+/* width */
+.adminTableMainDiv::-webkit-scrollbar {
+  height: 7px;
+}
+
+/* Handle */
+.adminTableMainDiv::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+.adminTableMainDiv::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.adminTableHeading {
+  margin-bottom: var(--mp-Main);
+}
+
+.adminTable {
+  border-collapse: collapse;
+  background-color: white;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: var(--mp-Secondary);
+  width: 100%;
+  max-width: 70%;
+}
+
+.adminTable thead {
+  border-bottom: 1px solid var(--border-Color);
+  background-color: var(--blue-Color);
+  color: var(--primary-Color-Light);
+}
+
+.adminTable th {
+  padding: 1rem 2rem;
+  letter-spacing: 0.1rem;
+  font-size: 0.9rem;
+}
+.adminTable td {
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.adminTable tr:nth-child(even) {
+  background-color: #005ce617;
 }

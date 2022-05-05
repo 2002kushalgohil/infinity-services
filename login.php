@@ -75,7 +75,7 @@ if (isset($_POST['login'])) {
                switch($db_stype){
                    case'user':header("location:user/");
                    break;
-                   case'admin':header("location:admin/admindashboard.php");
+                   case'admin':header("location:admin/");
                    break;
                    case'sp':header("location:service-provider/bookings.php");
                    break;
