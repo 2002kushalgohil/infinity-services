@@ -26,6 +26,17 @@
      $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM sproviders  ");
      $spDataRows = mysqli_num_rows($unFIlteredSPData);
 
+
+     
+     // -------------------- Fetch user from dtabase --------------------
+     $checkUnfilterredArr = mysqli_query($conn, "SELECT * FROM users WHERE id= '$userId'");
+     $userData = mysqli_fetch_array($checkUnfilterredArr);
+     
+ 
+     // if $spData is empty the make it as an empty array
+     if(!$userData){
+        echo "<script>window.location.href = './account-setup.php';</script>";
+     }
     //  ------------- Get Book Id from book_Id_Get click -------------------------
     if(isset($_POST['book_Id_Get'])){
         $sp_id = $_POST['sp_id'];

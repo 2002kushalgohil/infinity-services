@@ -499,7 +499,8 @@ nav ul li {
 }
 
 .userBookingCardDiv3 p,
-.userBookingCardDiv3 select {
+.userBookingCardDiv3 select,
+.userBookingCardDiv3 input {
   margin-bottom: var(--mp-Secondary);
 }
 
@@ -510,23 +511,51 @@ nav ul li {
   border-radius: var(--mp-Tertiary);
 }
 
+.userBookingRating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  display: inline-flex;
+  margin-bottom: var(--mp-Main);
+}
+
+.userBookingRatingImg{
+  width: 25px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
 .Requested {
   background-color: #ffeb3b;
 }
 
 .Accepted {
   background-color: #4caf50;
-  color:var(--primary-Color-Light);
+  color: var(--primary-Color-Light);
 }
 
 .Finished {
   background-color: #2196f3;
-  color:var(--primary-Color-Light);
+  color: var(--primary-Color-Light);
 }
 
-.Paid{
+.Paid {
   background-color: #4caf50;
-  color:var(--primary-Color-Light);
+  color: var(--primary-Color-Light);
+}
+
+.Rejected {
+  background-color: #f44336;
+  color: var(--primary-Color-Light);
+}
+
+.UnPaid {
+  background-color: #ffeb3b;
+}
+
+.ChangedTime{
+  background-color: #ffeb3b;
 }
 
 /* --------------------------------- Login and Signup ---------------------------------*/

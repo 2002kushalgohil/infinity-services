@@ -27,7 +27,7 @@
  
      // if $spData is empty the make it as an empty array
      if(!$spData){
-        header("account-setup.php");
+        echo "<script>window.location.href = './account-setup.php';</script>";
          $spData['uname'] = "";
          $spData['umail'] = "";
          $spData['umob'] = "";

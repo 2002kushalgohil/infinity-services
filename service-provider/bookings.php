@@ -13,14 +13,21 @@
     } 
     
     // -------------------- specific user can access only his profile --------------------
-    if($sType != 'user'){
+    if($sType != 'sp'){
         echo "<script>window.location.href = '../service-provider/profile.php';</script>";
     }
 
      // -------------------- Fetch user Id from dtabase --------------------
      mysqli_select_db($conn, 'infinity') or die(mysqli_error($conn));
-     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM services WHERE usr_id = '$userId' ");
+     $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM services WHERE sp_id = '$userId' ");
      $spDataRows = mysqli_num_rows($unFIlteredSPData);
+
+     $checkDataUnfiltered = mysqli_query($conn, "SELECT * FROM sproviders WHERE id= '$userId'");
+     $checkData = mysqli_fetch_array($checkDataUnfiltered);
+
+     if(!$checkData){
+        echo "<script>window.location.href = './account-setup.php';</script>";
+     }
 
     //  ----------------------- Updating Status -----------------------
     if(isset($_POST['update_status'])){
@@ -43,23 +50,25 @@
         
     }
 
-    if(isset($_POST['update_rating'])){
-        $ratings = $_POST['ratings'];
+    // ------------------------- Request new Time and Date -----------------------
+    if(isset($_POST['change_booking_date_time'])){
         $serv_id = $_POST['serv_id'];
-        if($ratings == ""){
-            echo "<script>alert('Please select the rating')</script>";
+        $rdate = $_POST['rdate'];
+        $rtime = $_POST['rtime'];
+        $serv_status = "ChangedTime";
+        if($rdate == "" || $rtime == ""){
+            echo "<script>alert('Please select the date and time')</script>";
         }
         else{
-            $update_rating = mysqli_query($conn, "UPDATE services SET ratings = '$ratings' WHERE serv_id = '$serv_id' ");
-            if($update_rating){
-                echo "<script>alert('Rating updated successfully')</script>";
+            $update_status = mysqli_query($conn, "UPDATE services SET serv_status = '$serv_status', rdate = '$rdate', rtime = '$rtime' WHERE serv_id = '$serv_id' ");
+            if($update_status){
+                echo "<script>alert('Status updated successfully')</script>";
                 echo "<script>window.location.href = './bookings.php';</script>";
             }
             else{
-                echo "<script>alert('Rating not updated')</script>";
+                echo "<script>alert('Status not updated')</script>";
             }
         }
-        
     }
 
 ?>
@@ -85,7 +94,6 @@
         <a href="#home"><img src="../Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
             <li><a href='./profile.php'>Profile</a></li>
-            <li><a href='./'>Dashboard</a></li>
             <li><a href='../logout.php'>Logout</a></li>
         </ul>
     </nav>
@@ -97,10 +105,13 @@
                 while($allServices = mysqli_fetch_assoc($unFIlteredSPData)){            
             ?>
             <div class="userBookingCard boxShadow1Hover">    
+                <?php if ("$allServices[ratings]" > 0) { ?>
+                    <p class="userBookingRating">You got <?php echo"$allServices[ratings]"?> <img src="../Assets/Images/star.png" class="userBookingRatingImg" alt=""> Rating</p>
+                <?php } ?>
                 <div class="userBookingCardDiv1">
                     <p class="status <?php echo"$allServices[serv_status]"?>"><?php echo"$allServices[serv_status]"?></p>
-                    <h2><?php echo"$allServices[sname]"?></h2>
-                    <p><?php echo"$allServices[serv]"?></p>
+                    <h2>User Name</h2>
+                    <p>User Address</p>
                 </div>    
                 <div class="userBookingCardDiv2">
                     <p><?php echo"$allServices[rdate]"?></p>
@@ -108,45 +119,42 @@
                 </div>  
                 
                 <!-- --------------------------------- Status Change --------------------------------------- -->
-                <?php if ("$allServices[serv_status]" == "Accepted") { ?>
+                <?php if ("$allServices[serv_status]" == "Requested") { ?>
                     <form class="userBookingCardDiv3" method="POST">
                         <p>Update Status</p>
                         <input type="hidden" name="serv_id" value="<?php echo"$allServices[serv_id]"?>">
                         <select name="serv_status" class="inputBx inputBxHalf">
                             <option value="">Select</option>
-                            <option value="Finished">Finished</option>
+                            <option value="Accepted">Accepted</option>
+                            <option value="Rejected">Rejected</option>
                         </select>
                         <button type="submit" name="update_status" class="btn">Update</button>
+                    </form>   
+                <?php } ?>
+
+                 <!-- --------------------------------- Date Time Change --------------------------------------- -->
+                 <?php if ("$allServices[serv_status]" == "Rejected") { ?>
+                    <form class="userBookingCardDiv3" method="POST">
+                        <p>Change Booking Date</p>
+                        <input class="inputBx boxShadow1Hover" type="date" name="rdate"value="<?php echo"$allServices[rdate]"?>">
+                        <p>Change Booking Time</p>
+                        <input class="inputBx boxShadow1Hover" type="time" name="rtime"value="<?php echo"$allServices[rtime]"?>">
+                        <input type="hidden" name="serv_id" value="<?php echo"$allServices[serv_id]"?>">
+                        <button type="submit" class="btn" name="change_booking_date_time">Submit</button>
                     </form>   
                 <?php } ?>
                 
                 <!-- --------------------------------- Status Change --------------------------------------- -->
-                <?php if ("$allServices[serv_status]" == "ChangedTime") { ?>
+                <?php if ("$allServices[serv_status]" == "Finished"||"$allServices[serv_status]" == "UnPaid") { ?>
                     <form class="userBookingCardDiv3" method="POST">
-                        <p>Accept new time</p>
+                        <p>Update Status</p>
                         <input type="hidden" name="serv_id" value="<?php echo"$allServices[serv_id]"?>">
                         <select name="serv_status" class="inputBx inputBxHalf">
                             <option value="">Select</option>
-                            <option value="Accepted">Accept</option>
+                            <option value="Paid" selected=<?php echo"$allServices[serv_status]"?>>Paid</option>
+                            <option value="UnPaid" selected=<?php echo"$allServices[serv_status]"?>>Not Paid</option>
                         </select>
                         <button type="submit" name="update_status" class="btn">Update</button>
-                    </form>   
-                <?php } ?>
-                
-                <!-- --------------------------------- Ratings Change --------------------------------------- -->
-                <?php if ("$allServices[ratings]" == 0 && ("$allServices[serv_status]" == "Paid" ||"$allServices[serv_status]" == "Finished"||"$allServices[serv_status]" == "UnPaid")) { ?>
-                    <form class="userBookingCardDiv3" method="POST">
-                        <p>Rate your experience</p>
-                        <input type="hidden" name="serv_id" value="<?php echo"$allServices[serv_id]"?>">
-                        <select name="ratings" class="inputBx inputBxHalf">
-                            <option value="">Select</option>
-                            <option value="1">1 Star</option>
-                            <option value="2">2 Star</option>
-                            <option value="5">5 Star</option>
-                            <option value="3">3 Star</option>
-                            <option value="4">4 Star</option>
-                        </select>
-                        <button type="submit" name="update_rating" class="btn">Rate</button>
                     </form>   
                 <?php } ?>
             </div>

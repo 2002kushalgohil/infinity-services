@@ -47,7 +47,7 @@
         }
         else{
             if($spData['uname'] == ""){
-                $sql = "INSERT INTO users (id, uname, umail, umob, location) VALUES ('$id2[id]', '$uname', '$uemail', '$umobno', '$location')";
+                $sql = "INSERT INTO users (id, uname, umail, umob, location) VALUES ('$userId', '$uname', '$uemail', '$umobno', '$location')";
                 if(mysqli_query($conn, $sql)){
                     echo "<script>window.location.href='profile.php'</script>";
                 }

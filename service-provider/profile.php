@@ -53,7 +53,7 @@
 <nav class="glass">
         <a href="#home"><img src="../Assets/Images/infinityLoop2.gif" class="navImg" alt=""></a>
             <ul>
-                <li><a href=''>Dashboard</a></li>
+                <li><a href='./bookings.php'>Bookings</a></li>
                 <li><a href='../logout.php'>Logout</a></li>
         </ul>
     </nav>

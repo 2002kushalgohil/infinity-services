@@ -73,11 +73,11 @@ if (isset($_POST['login'])) {
                 $_SESSION['sess_stype'] = $db_stype;
                 
                switch($db_stype){
-                   case'user':header("location:user/profile.php");
+                   case'user':header("location:user/");
                    break;
                    case'admin':header("location:admin/admindashboard.php");
                    break;
-                   case'sp':header("location:service-provider/profile.php");
+                   case'sp':header("location:service-provider/bookings.php");
                    break;
                }
             } else {
