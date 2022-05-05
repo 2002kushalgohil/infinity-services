@@ -954,8 +954,8 @@ nav ul li {
 
 .adminTableMainDiv {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
   overflow: scroll;
   width: 100%;
@@ -989,7 +989,7 @@ nav ul li {
   cursor: pointer;
   border-radius: var(--mp-Secondary);
   width: 100%;
-  max-width: 70%;
+  max-width: 100%;
 }
 
 .adminTable thead {
@@ -1058,10 +1058,4 @@ nav ul li {
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
-}
-
-@media (max-width: 970px) {
-  .adminTableMainDiv {
-    align-items: flex-start;
-  }
 }
