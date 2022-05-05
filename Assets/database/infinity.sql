@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2022 at 04:19 PM
+-- Generation Time: May 05, 2022 at 07:54 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -84,12 +84,12 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`serv_id`, `usr_id`, `sp_id`, `sname`, `serv`, `uname`, `location`, `serv_status`, `ratings`, `rdate`, `rtime`) VALUES
-(124, 144, 143, 'abdul karim', 'Mechanic', 'john yacruise', 'pune', 'Paid', 3, '2022-05-05', '00:00:00'),
-(125, 150, 140, 'abhinav bankar', 'Mechanic', 'anamika khanna', 'pune', 'Paid', 2, '2022-05-12', '18:14:00'),
-(126, 151, 141, 'dev varma', 'Pet sitting', 'gopal dhamaal', 'mumbai', 'UnPaid', 0, '2022-05-05', '18:46:00'),
-(127, 151, 138, 'varun anand', 'Advocate', 'gopal dhamaal', 'mumbai', 'Requested', 0, '2022-05-05', '20:47:00'),
-(128, 154, 148, 'vikram bajaj', 'Advocate', 'Rudisn', 'Shr', 'Requested', 0, '2022-05-05', '18:46:00'),
-(129, 151, 145, 'karishma patil', 'Makeup artist', 'gopal dhamaal', 'mumbai', 'Requested', 0, '2022-05-20', '22:26:00');
+(124, 144, 143, 'Abdul karim', 'Mechanic', 'John yacruise', 'pune', 'Paid', 3, '2022-05-05', '00:00:00'),
+(125, 150, 140, 'Abhinav bankar', 'Mechanic', 'Anamika khanna', 'pune', 'Paid', 2, '2022-05-12', '18:14:00'),
+(126, 151, 141, 'Dev varma', 'Pet sitting', 'Gopal dhamaal', 'mumbai', 'UnPaid', 0, '2022-05-05', '18:46:00'),
+(127, 151, 138, 'Varun anand', 'Advocate', 'Gopal dhamaal', 'mumbai', 'Requested', 0, '2022-05-05', '20:47:00'),
+(128, 154, 148, 'Vikram bajaj', 'Advocate', 'Rudisn', 'Shr', 'Requested', 0, '2022-05-05', '18:46:00'),
+(129, 151, 145, 'Karishma patil', 'Makeup artist', 'Gopal dhamaal', 'mumbai', 'Requested', 0, '2022-05-20', '22:26:00');
 
 -- --------------------------------------------------------
 

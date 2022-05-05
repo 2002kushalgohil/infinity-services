@@ -21,6 +21,37 @@
      $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM users");
      $spDataRows = mysqli_num_rows($unFIlteredSPData);
 
+     if(isset($_POST['download_report'])){
+        if($spDataRows > 0){
+        $list = array(
+            ['Name', 'Email', 'Mobile Number', 'Location'],
+        );
+        $fp = fopen('../Reports/User Reports.csv', 'w');
+        foreach ($list as $fields) {
+            fputcsv($fp, $fields);
+        }
+        while($row = mysqli_fetch_assoc($unFIlteredSPData)){
+            $list = array(
+                [$row['uname'], $row['umail'], $row['umob'], $row['location']],
+            );
+            foreach ($list as $fields) {
+                fputcsv($fp, $fields);
+            }
+        }
+        fclose($fp);
+        // --------------------------- Download file -------------------------
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename('../Reports/User Reports.csv').'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize('../Reports/User Reports.csv'));
+        readfile('../Reports/User Reports.csv');
+        exit;
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +78,10 @@
             <li><a href='../logout.php'>Logout</a></li>
         </ul>
     </nav>
-    <section class="mainSection">
+    <section class="mainSection adminDashboardMainDiv">
+        <form method="POST">
+            <button class="btn" name="download_report">Download Report</button>
+        </form>
         <div class="adminTableMainDiv">
             <h2 class="adminTableHeading">Users</h2>
             <table class="adminTable boxShadow1Hover">

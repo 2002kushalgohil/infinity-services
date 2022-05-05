@@ -21,6 +21,37 @@
      $unFIlteredSPData = mysqli_query($conn, "SELECT * FROM services");
      $spDataRows = mysqli_num_rows($unFIlteredSPData);
 
+    if(isset($_POST['download_report'])){
+        if($spDataRows > 0){
+            $list = array(
+                ['Date', 'User Name', 'Service', 'Service Provider', 'Location', 'Ratings', 'Status'],
+            );
+            $fp = fopen('../Reports/Service Provider Reports.csv', 'w');
+            foreach ($list as $fields) {
+                fputcsv($fp, $fields);
+            }
+            while($row = mysqli_fetch_assoc($unFIlteredSPData)){
+                $list = array(
+                    [$row['rdate'], $row['uname'], $row['serv'], $row['sname'], $row['location'], $row['ratings'], $row['serv_status']],
+                );
+                foreach ($list as $fields) {
+                    fputcsv($fp, $fields);
+                }
+            }
+            fclose($fp);
+            // --------------------------- Download file -------------------------
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="'.basename('../Reports/Service Provider Reports.csv').'"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize('../Reports/Service Provider Reports.csv'));
+            readfile('../Reports/Service Provider Reports.csv');
+            exit;
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +78,10 @@
             <li><a href='../logout.php'>Logout</a></li>
         </ul>
     </nav>
-    <section class="mainSection">
+    <section class="mainSection adminDashboardMainDiv">
+        <form method="POST">
+            <button class="btn" name="download_report">Download Report</button>
+        </form>
         <div class="adminTableMainDiv">
             <h2 class="adminTableHeading">Orders</h2>
             <table class="adminTable boxShadow1Hover">

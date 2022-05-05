@@ -33,6 +33,29 @@
      $totalsprovidersUnfiltered = mysqli_query($conn, "SELECT * FROM sproviders");
      $totalsproviders = mysqli_num_rows($totalsprovidersUnfiltered);
 
+    //  --------------------- Download CSV file --------------------
+    if(isset($_POST['download_report'])){
+        $list = array(
+            ['Total Orders', 'Finished Orders', 'Paid Orders','Unpaid Orders', 'Total Users', 'Total Providers'],
+            [$totalOrders, $finishedOrders, $finishedOrders, $unpaidOrders, $totalUsers, $totalsproviders]
+        );
+        $fp = fopen('../Reports/Total Reports.csv', 'w');
+        foreach ($list as $fields) {
+            fputcsv($fp, $fields);
+        }
+        fclose($fp);
+        // --------------------------- Download file -------------------------
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename('../Reports/Total Reports.csv').'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize('../Reports/Total Reports.csv'));
+        readfile('../Reports/Total Reports.csv');
+        exit;
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +83,9 @@
         </ul>
     </nav>
     <section class="mainSection adminDashboardMainDiv">
-    <button class="btn">Download Report</button>
+        <form method="POST">
+            <button class="btn" name="download_report">Download Report</button>
+        </form>
         <div class="adminDashboardMainCardDiv">
             <a href="./orders.php" class="adminDashboardCard Finished boxShadow1Hover">
                 <h3>Total Orders</h3>
