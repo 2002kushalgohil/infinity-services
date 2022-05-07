@@ -100,38 +100,6 @@
         </ul>
     </nav>
     <section class="mainSection">
-        <div class="userDashbaordSearchDiv">
-            <p>Some Lorem ipsum Stuff?</p>
-            <div class="userDashbaordSearchDivSearchParent">
-                <input type="checkbox" name="userSearchChkBx" id="userSearchChkBx" />
-                <input type="text" class="inputBx boxShadow1Hover" placeholder="Search... (For Eg:- Advocate)"
-                    id="userDashBoardSearchBx" />
-                <div class="userDashboardSearchDropdown glass">
-                    <div class="userDashboardSearchDropdownMainDiv">
-                        <div class="userDashboardSearchDropdownSubDiv1">
-                            <div>
-                                <input type="checkbox" name="Advocates" id="Advocates" />
-                                <label for="Advocates">Advocates</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="Painters" id="Painters" />
-                                <label for="Painters">Painters</label>
-                            </div>
-                        </div>
-                        <div class="userDashboardSearchDropdownSubDiv2">
-                            <div>
-                                <input type="checkbox" name="Electrician" id="Electrician" />
-                                <label for="Electrician">Electrician</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="Mechanic" id="Mechanic" />
-                                <label for="Mechanic">Mechanic</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="userDashBoardCardMainDiv">
         <?php
             if($spDataRows!=0){
