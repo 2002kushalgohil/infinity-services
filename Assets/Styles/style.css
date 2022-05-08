@@ -234,68 +234,12 @@ nav ul li {
 }
 
 /* --------------------------------- User Dashboard ---------------------------------*/
-.userDashbaordSearchDiv {
-  width: 100%;
-  margin-top: 120px;
-  text-align: center;
-}
-
-.userDashbaordSearchDivSearchParent {
-  width: 100%;
-  margin-top: var(--mp-Secondary);
-  position: relative;
-}
-
-.userDashboardSearchDropdown {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  position: absolute;
-  top: 55px;
-  display: none;
-  padding: var(--mp-Main);
-  z-index: 10;
-}
-
-.userDashboardSearchDropdownMainDiv {
-  border: 1px solid var(--border-Color);
-  border-radius: var(--mp-Tertiary);
-  width: 400px;
-  text-align: left;
-  padding: var(--mp-Main);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--primary-Color-Light);
-}
-
-.userDashboardSearchDropdownMainDiv label {
-  cursor: pointer;
-}
-
-.userDashboardSearchDropdownSubDiv1,
-.userDashboardSearchDropdownSubDiv2 {
-  flex: 1;
-}
-
-.userDashbaordSearchDiv input {
-  max-width: 400px;
-}
-
-#userSearchChkBx {
-  display: none;
-}
-
-#userSearchChkBx:checked ~ .userDashboardSearchDropdown {
-  display: flex;
-}
 
 .userDashBoardCardMainDiv {
   display: flex;
-  align-items: flex-start;
-  justify-content: start;
-  /* flex-wrap: wrap; */
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
   overflow: scroll;
   margin-top: var(--mp-Main);
 }
